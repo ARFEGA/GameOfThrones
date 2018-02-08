@@ -24,10 +24,21 @@ class HouseTests: XCTestCase {
     
     func testHouseExistence(){
         // given
-        let stark = House()
+        let starkSigil=Sigil(image:UIImage(),description:"Es un lobo")
+        let stark = House(name:"Stark",sigil:starkSigil,words:"Winter is coming")
+       // print(type(of: stark))
         XCTAssertNotNil(stark)
         // when
         // then
+    }
+    
+  
+    func testSigilExistence(){
+        let starkSigil=Sigil(image:UIImage(),description:"Es un lobo")
+        XCTAssertNotNil(starkSigil)
+        let lannisterSigil=Sigil(image:UIImage(),description:"Leon Rampante")
+        XCTAssertNotNil(lannisterSigil)
+        
     }
     
 }

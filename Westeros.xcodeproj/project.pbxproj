@@ -12,6 +12,8 @@
 		47479F77202CE4D500EC3F27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47479F75202CE4D500EC3F27 /* LaunchScreen.storyboard */; };
 		4754B8D2202CF01D005CE93F /* HouseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4754B8D1202CF01D005CE93F /* HouseTests.swift */; };
 		4754B8D4202CF1C2005CE93F /* House.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4754B8D3202CF1C2005CE93F /* House.swift */; };
+		4754B8D6202CFD87005CE93F /* PersonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4754B8D5202CFD87005CE93F /* PersonTests.swift */; };
+		4754B8D8202CFE0B005CE93F /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4754B8D7202CFE0B005CE93F /* Person.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,8 @@
 		47479F83202CE4D500EC3F27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4754B8D1202CF01D005CE93F /* HouseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseTests.swift; sourceTree = "<group>"; };
 		4754B8D3202CF1C2005CE93F /* House.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = House.swift; sourceTree = "<group>"; };
+		4754B8D5202CFD87005CE93F /* PersonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTests.swift; sourceTree = "<group>"; };
+		4754B8D7202CFE0B005CE93F /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,7 @@
 				47479F75202CE4D500EC3F27 /* LaunchScreen.storyboard */,
 				47479F78202CE4D500EC3F27 /* Info.plist */,
 				4754B8D3202CF1C2005CE93F /* House.swift */,
+				4754B8D7202CFE0B005CE93F /* Person.swift */,
 			);
 			path = Westeros;
 			sourceTree = "<group>";
@@ -89,6 +94,7 @@
 			children = (
 				47479F83202CE4D500EC3F27 /* Info.plist */,
 				4754B8D1202CF01D005CE93F /* HouseTests.swift */,
+				4754B8D5202CFD87005CE93F /* PersonTests.swift */,
 			);
 			path = WesterosTests;
 			sourceTree = "<group>";
@@ -196,6 +202,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4754B8D8202CFE0B005CE93F /* Person.swift in Sources */,
 				4754B8D4202CF1C2005CE93F /* House.swift in Sources */,
 				47479F6D202CE4D500EC3F27 /* AppDelegate.swift in Sources */,
 			);
@@ -206,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4754B8D2202CF01D005CE93F /* HouseTests.swift in Sources */,
+				4754B8D6202CFD87005CE93F /* PersonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
