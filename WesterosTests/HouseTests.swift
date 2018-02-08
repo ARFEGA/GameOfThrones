@@ -11,8 +11,26 @@ import XCTest
 
 
 class HouseTests: XCTestCase {
+    var starkSigil:Sigil!
+    var lannisterSigil:Sigil!
+    var starkHouse:House!
+    var lannisterHouse:House!
+    
+    var roob:Person!
+    var arya:Person!
+    var tyrion:Person!
+    
     
     override func setUp() {
+        starkSigil=Sigil(image:UIImage(),description:"Lobo Huargo")
+        lannisterSigil=Sigil(image:UIImage(),description:"Leon Rampante")
+        starkHouse = House(name:"Stark",sigil:starkSigil,words:"Winter is coming")
+        lannisterHouse = House(name:"Lannister",sigil:lannisterSigil,words:"Oye mi rugido")
+        tyrion = Person(name:"Tyrion",alias:"El Enano",house:lannisterHouse)
+        arya = Person(name:"Aria",house:starkHouse)
+        roob = Person(name: "Robb", alias: "El Joven Lobo", house: starkHouse)
+        
+        
         super.setUp()
        
     }
@@ -23,22 +41,36 @@ class HouseTests: XCTestCase {
     }
     
     func testHouseExistence(){
-        // given
-        let starkSigil=Sigil(image:UIImage(),description:"Es un lobo")
-        let stark = House(name:"Stark",sigil:starkSigil,words:"Winter is coming")
-       // print(type(of: stark))
-        XCTAssertNotNil(stark)
-        // when
-        // then
+      
+        XCTAssertNotNil(starkHouse)
+          XCTAssertNotNil(lannisterHouse)
+        
+       
     }
     
   
     func testSigilExistence(){
-        let starkSigil=Sigil(image:UIImage(),description:"Es un lobo")
+        
         XCTAssertNotNil(starkSigil)
-        let lannisterSigil=Sigil(image:UIImage(),description:"Leon Rampante")
+       
         XCTAssertNotNil(lannisterSigil)
         
     }
+    func testAddPerson(){
+        XCTAssertEqual(starkHouse.count, 0)
+        
+        starkHouse.add(person:roob)
+        XCTAssertEqual(starkHouse.count, 1)
+        
+        starkHouse.add(person:roob)
+        XCTAssertEqual(starkHouse.count, 1)
+        
+        starkHouse.add(person:arya)
+        XCTAssertEqual(starkHouse.count, 2)
+        
+        starkHouse.add(person:tyrion)
+        XCTAssertEqual(starkHouse.count, 2)
+    }
+  
     
 }

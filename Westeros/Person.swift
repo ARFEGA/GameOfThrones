@@ -18,8 +18,6 @@ final class Person{
         return _alias ?? ""
         //Esta es más larga
         //if let _alias=_alias{return _alias}else{return ""}
-        
-        
     }
     // MARK : - Inicializadores
     init(name:String, alias:String?=nil , house:House){
@@ -27,5 +25,30 @@ final class Person{
         _alias=alias
         self.house=house
     }
-   
+}
+
+extension Person{
+    var fullName:String{
+        return "\(name) \(house.name)"
+    }
+}
+// MARK: - proxies
+extension Person{
+    var proxy:String{
+        return "\(name)\(alias)\(house.name)"
+    }
+}
+// MARK: - Hashable
+extension Person:Hashable{
+    var hashValue:Int{
+        return proxy.hashValue
+    }
+}
+// MARK: - Equatable
+extension Person:Equatable{
+    static func ==(lhs: Person, rhs: Person) -> Bool {
+        return lhs.proxy == rhs.proxy
+    }
+    
+    
 }
