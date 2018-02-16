@@ -21,9 +21,70 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window=UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.blue
         window?.makeKeyAndVisible()
-        let root=UIViewController()
-        window?.rootViewController=root
-        // Override point for customization after application launch.
+        
+        //Creamos un modelo
+        let houses=Repository.local.houses
+        
+        //VC de la tabla
+        let housesListVC=HouseListViewController(model: houses)
+        
+        //Asignamos el VC a root de la ventana y metemos la tabla en un navigation
+        window?.rootViewController = housesListVC.wrappedInNavigation()
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        //        let tabBarViewController=UITabBarController()
+        //        tabBarViewController.viewControllers =
+        //            houses
+        //            .map{ HouseDetailViewController(model:$0) }
+        //            .map{ $0.wrappedInNavigation() }
+        
+        // Crea los controladores
+        //let controllers=houses.map{house in
+        //    return HouseDetailViewController(model:house).wrappedInNavigation()
+        //}
+        //var controllers=[UIViewController]()
+        //for house in houses{
+        //    controllers.append(HouseDetailViewController(model:house).wrappedInNavigation())
+        //}
+        
+        //Crear unos modelos
+        //let starkSigil=Sigil(image:UIImage(named:"codeIsComing.png")!,description:"Lobo Huargo")
+        //let starkHouse=House(name: "Stark", sigil: starkSigil, words: "Se acerca el invierno")
+        //let lannisterSigil=Sigil(image:UIImage(named:"lannister.jpg")!,description:"Leon Rampante")
+        //let lannisterHouse=House(name: "Lannister", sigil: lannisterSigil, words: "Oye mi rugido")
+        
+        //Crear los controladores
+        //let starkHouseVC=HouseDetailViewController(model: starkHouse)
+        //let lannisterHouseVC=HouseDetailViewController(model: lannisterHouse)
+        //var navigationsControllers=[UINavigationController]()
+        //for controller in controllers{
+        //    navigationsControllers.append(controller.wrappedInNavigation())
+        //}
+        
+        //Creamos los navigations
+        //let starkNavigationController=UINavigationController(rootViewController: starkHouseVC)
+        //let lannisterNavigationController=UINavigationController(rootViewController: lannisterHouseVC)
+        
+        //Creamos los combinadores
+        
+        //Los objetos entre corchetes, llamana a la función wrappedInNavigation (función creada en Extension creada por nosotros en UIKitExtensions), que devuelve el VC embuelto en un navigation controler.
+        //tabBarViewController.viewControllers    = [starkHouseVC.wrappedInNavigation(),lannisterHouseVC.wrappedInNavigation()]
+        //tabBarViewController.viewControllers    = [starkNavigationController,lannisterNavigationController]
+        
+        
+        
+        
+        //Asignamos el rootVC
+        //window?.rootViewController=tabBarViewController
+       
+        
         return true
     }
 
