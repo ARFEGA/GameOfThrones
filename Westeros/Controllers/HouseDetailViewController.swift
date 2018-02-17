@@ -16,6 +16,7 @@ class HouseDetailViewController: UIViewController {
     @IBOutlet weak var sigilImageView: UIImageView!
     @IBOutlet weak var wordsLabel: UILabel!
     
+    
     //Mark: - Properties
     let model:House
     
@@ -56,13 +57,21 @@ class HouseDetailViewController: UIViewController {
     // MARK - UI  (Create button)
     func setupUI(){
         let wikiButton=UIBarButtonItem(title: "Wiki", style: .plain, target: self, action:#selector(displayWiki))
-        navigationItem.rightBarButtonItem=wikiButton
+        //navigationItem.rightBarButtonItem=wikiButton
+        let PersonsHouse=UIBarButtonItem(title: "Members", style: .plain, target: self, action: #selector(displayPersons))
+        navigationItem.rightBarButtonItems=[wikiButton,PersonsHouse]
+        
     }
     
     @objc func displayWiki(){
         //Creamos el wikiVC
         let wikiVC=WikiViewController(model: model)
         navigationController?.pushViewController(wikiVC, animated: true)
+    }
+    @objc func displayPersons(){
+        //Creamos el controlador y hacemos un push
+        let PersonVC=PersonsListViewController(persons: model.SortedPersons)
+        navigationController?.pushViewController(PersonVC, animated: true)
     }
     
     

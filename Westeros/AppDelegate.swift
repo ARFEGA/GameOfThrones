@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //}
         window=UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.blue
-        window?.makeKeyAndVisible()
+        
         
         //Creamos un modelo
         let houses=Repository.local.houses
@@ -30,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Asignamos el VC a root de la ventana y metemos la tabla en un navigation
         window?.rootViewController = housesListVC.wrappedInNavigation()
+        window?.makeKeyAndVisible()
+        
         
         
         

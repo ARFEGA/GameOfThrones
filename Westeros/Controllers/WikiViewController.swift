@@ -19,16 +19,18 @@ class WikiViewController: UIViewController {
     @IBOutlet weak var aIndicatorView: UIActivityIndicatorView!
     
    //MARK: - Properties
-    let model:House
+    let allModel:AnyObject
     
     
     //MARK: - Initialization
-    init(model:House)
-    {
-        self.model=model
+    init(model:AnyObject)
+    {   //Si no es House lo castea a Person
+        self.allModel=model
         //Siempre llamar a super.init
         super.init(nibName: nil, bundle: nil)
     }
+    
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -45,19 +47,24 @@ class WikiViewController: UIViewController {
     
     //MARK: - Sync
     func syncModelWithView(){
-        title=model.name
-        webView.load(URLRequest(url:model.wikiURL))
-      
+        var url : URL
+        if (allModel is House){
+            url = (allModel as! House).wikiURL
+        } else{
+            url = (allModel as! Person).wikiURL
+        }
+        webView.load(URLRequest(url:url))
     }
     
 }
 //Hay que extender la clase e implementar el protocolo
 extension WikiViewController:WKNavigationDelegate{
+    //Cuando termina de cargarse la web, qué hacer
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         aIndicatorView.stopAnimating()
         aIndicatorView.isHidden=true
     }
-    
+    //Activar/desactivar los link de la web que se muestra
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         
         let type=navigationAction.navigationType

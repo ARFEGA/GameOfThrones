@@ -35,8 +35,12 @@ final class House{
 }
 
 extension House{
+    //MARK - extended properties
     var count:Int{
         return _members.count
+    }
+    var SortedPersons:[Person]{
+        return  _members.sorted (by: { $0.fullName < $1.fullName})
     }
     func add(person:Person){
         guard person.house.name == self.name else { return}

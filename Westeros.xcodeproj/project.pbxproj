@@ -18,10 +18,18 @@
 		472381BE20323A8A001944C1 /* HouseDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 472381BC20323A8A001944C1 /* HouseDetailViewController.xib */; };
 		47479F6D202CE4D500EC3F27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47479F6C202CE4D500EC3F27 /* AppDelegate.swift */; };
 		47479F77202CE4D500EC3F27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47479F75202CE4D500EC3F27 /* LaunchScreen.storyboard */; };
+		4750114C203847D500B03788 /* Tyrion-Lannister.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 47501146203847D400B03788 /* Tyrion-Lannister.jpg */; };
+		4750114D203847D500B03788 /* Jaime.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 47501147203847D400B03788 /* Jaime.jpg */; };
+		4750114E203847D500B03788 /* Robb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 47501148203847D500B03788 /* Robb.jpg */; };
+		4750114F203847D500B03788 /* Arya.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 47501149203847D500B03788 /* Arya.jpg */; };
+		47501150203847D500B03788 /* Cersei.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4750114A203847D500B03788 /* Cersei.jpg */; };
+		47501151203847D500B03788 /* Daenerys.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4750114B203847D500B03788 /* Daenerys.jpg */; };
 		4754B8D2202CF01D005CE93F /* HouseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4754B8D1202CF01D005CE93F /* HouseTests.swift */; };
 		4754B8D4202CF1C2005CE93F /* House.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4754B8D3202CF1C2005CE93F /* House.swift */; };
 		4754B8D6202CFD87005CE93F /* PersonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4754B8D5202CFD87005CE93F /* PersonTests.swift */; };
 		4754B8D8202CFE0B005CE93F /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4754B8D7202CFE0B005CE93F /* Person.swift */; };
+		476CB467203750BD003A5FBC /* PersonsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476CB465203750BD003A5FBC /* PersonsListViewController.swift */; };
+		476CB468203750BD003A5FBC /* PersonsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 476CB466203750BD003A5FBC /* PersonsListViewController.xib */; };
 		47BCCD8420337CA000048C01 /* UIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BCCD8320337CA000048C01 /* UIViewController+Additions.swift */; };
 		47BCCD862033807D00048C01 /* RepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BCCD852033807D00048C01 /* RepositoryTests.swift */; };
 		47BCCD882033817700048C01 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BCCD872033817700048C01 /* Repository.swift */; };
@@ -53,10 +61,18 @@
 		47479F78202CE4D500EC3F27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47479F7D202CE4D500EC3F27 /* WesterosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WesterosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		47479F83202CE4D500EC3F27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		47501146203847D400B03788 /* Tyrion-Lannister.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Tyrion-Lannister.jpg"; sourceTree = "<group>"; };
+		47501147203847D400B03788 /* Jaime.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Jaime.jpg; sourceTree = "<group>"; };
+		47501148203847D500B03788 /* Robb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Robb.jpg; sourceTree = "<group>"; };
+		47501149203847D500B03788 /* Arya.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Arya.jpg; sourceTree = "<group>"; };
+		4750114A203847D500B03788 /* Cersei.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Cersei.jpg; sourceTree = "<group>"; };
+		4750114B203847D500B03788 /* Daenerys.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Daenerys.jpg; sourceTree = "<group>"; };
 		4754B8D1202CF01D005CE93F /* HouseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseTests.swift; sourceTree = "<group>"; };
 		4754B8D3202CF1C2005CE93F /* House.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = House.swift; sourceTree = "<group>"; };
 		4754B8D5202CFD87005CE93F /* PersonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTests.swift; sourceTree = "<group>"; };
 		4754B8D7202CFE0B005CE93F /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		476CB465203750BD003A5FBC /* PersonsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsListViewController.swift; sourceTree = "<group>"; };
+		476CB466203750BD003A5FBC /* PersonsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonsListViewController.xib; sourceTree = "<group>"; };
 		47BCCD8320337CA000048C01 /* UIViewController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Additions.swift"; sourceTree = "<group>"; };
 		47BCCD852033807D00048C01 /* RepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTests.swift; sourceTree = "<group>"; };
 		47BCCD872033817700048C01 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
@@ -93,6 +109,12 @@
 		472381BA20323918001944C1 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				47501149203847D500B03788 /* Arya.jpg */,
+				4750114A203847D500B03788 /* Cersei.jpg */,
+				4750114B203847D500B03788 /* Daenerys.jpg */,
+				47501147203847D400B03788 /* Jaime.jpg */,
+				47501148203847D500B03788 /* Robb.jpg */,
+				47501146203847D400B03788 /* Tyrion-Lannister.jpg */,
 				472381B3203238A3001944C1 /* codeIsComing.png */,
 				472381B5203238A3001944C1 /* lannister.jpg */,
 				472381B4203238A3001944C1 /* targaryenSmall.jpg */,
@@ -109,6 +131,8 @@
 				4706B3C020362BA200EB4206 /* WikiViewController.xib */,
 				4706B3C72036452200EB4206 /* HouseListViewController.swift */,
 				4706B3C82036452200EB4206 /* HouseListViewController.xib */,
+				476CB465203750BD003A5FBC /* PersonsListViewController.swift */,
+				476CB466203750BD003A5FBC /* PersonsListViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -250,10 +274,17 @@
 			files = (
 				472381B6203238A3001944C1 /* codeIsComing.png in Resources */,
 				472381BE20323A8A001944C1 /* HouseDetailViewController.xib in Resources */,
+				47501151203847D500B03788 /* Daenerys.jpg in Resources */,
+				4750114C203847D500B03788 /* Tyrion-Lannister.jpg in Resources */,
 				47479F77202CE4D500EC3F27 /* LaunchScreen.storyboard in Resources */,
+				476CB468203750BD003A5FBC /* PersonsListViewController.xib in Resources */,
 				472381B8203238A3001944C1 /* lannister.jpg in Resources */,
 				4706B3C220362BA200EB4206 /* WikiViewController.xib in Resources */,
+				47501150203847D500B03788 /* Cersei.jpg in Resources */,
 				4706B3CA2036452200EB4206 /* HouseListViewController.xib in Resources */,
+				4750114F203847D500B03788 /* Arya.jpg in Resources */,
+				4750114E203847D500B03788 /* Robb.jpg in Resources */,
+				4750114D203847D500B03788 /* Jaime.jpg in Resources */,
 				472381B7203238A3001944C1 /* targaryenSmall.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,6 +307,7 @@
 				4754B8D8202CFE0B005CE93F /* Person.swift in Sources */,
 				4754B8D4202CF1C2005CE93F /* House.swift in Sources */,
 				47BCCD8420337CA000048C01 /* UIViewController+Additions.swift in Sources */,
+				476CB467203750BD003A5FBC /* PersonsListViewController.swift in Sources */,
 				47479F6D202CE4D500EC3F27 /* AppDelegate.swift in Sources */,
 				47BCCD882033817700048C01 /* Repository.swift in Sources */,
 				4706B3C120362BA200EB4206 /* WikiViewController.swift in Sources */,

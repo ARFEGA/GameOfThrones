@@ -17,7 +17,7 @@ class HouseListViewController: UITableViewController {
     init(model:[House])
     {
         self.model=model
-        //Siempre llamar a super.init
+        //Siempre llamar a super.init, en este caso al ser una tabla indicando como queremos que se muestren las secciones (.grouped)
         super.init(style: .grouped)
         title="Westeros"
     }
@@ -48,7 +48,7 @@ class HouseListViewController: UITableViewController {
         //Crear la celda, preguntando si la hay en cache
         var cell=tableView.dequeueReusableCell(withIdentifier: cellId)
         if cell==nil{
-            cell=UITableViewCell(style: .default, reuseIdentifier: cellId)
+            cell=UITableViewCell(style:.default, reuseIdentifier: cellId)
         }
         //Sincronizar modelo (house) con la celda (vista)
         cell?.imageView?.image=houseActual.sigil.image
