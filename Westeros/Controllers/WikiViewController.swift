@@ -15,16 +15,14 @@ class WikiViewController: UIViewController {
 
     //MARK: - outlets
     @IBOutlet weak var webView: WKWebView!
-   
     @IBOutlet weak var aIndicatorView: UIActivityIndicatorView!
     
    //MARK: - Properties
     let allModel:AnyObject
     
-    
     //MARK: - Initialization
     init(model:AnyObject)
-    {   //Si no es House lo castea a Person
+    {
         self.allModel=model
         //Siempre llamar a super.init
         super.init(nibName: nil, bundle: nil)
@@ -57,9 +55,10 @@ class WikiViewController: UIViewController {
     }
     
 }
-//Hay que extender la clase e implementar el protocolo
+//Hay que extender la clase e implementar el protocolo (WKNavigationDelegate)
 extension WikiViewController:WKNavigationDelegate{
     //Cuando termina de cargarse la web, qué hacer
+    
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         aIndicatorView.stopAnimating()
         aIndicatorView.isHidden=true

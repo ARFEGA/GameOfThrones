@@ -13,7 +13,7 @@ import UIKit
 
 typealias Words = String
 
-//Con set, alamacenamos elementos y no permite que estén duplicados a dierencia de un array
+//Con set, alamacenamos elementos y no permite que estén duplicados a diferencia de un array
 typealias Members = Set<Person>
 
 final class House{
@@ -43,6 +43,7 @@ extension House{
         return  _members.sorted (by: { $0.fullName < $1.fullName})
     }
     func add(person:Person){
+        //Si el miembro no es de la casa, se hace return, sin almacenar el valor
         guard person.house.name == self.name else { return}
         _members.insert(person)
         

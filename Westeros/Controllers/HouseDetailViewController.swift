@@ -52,17 +52,18 @@ class HouseDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupUI()
-         syncModelWithView()
+        syncModelWithView()
     }
     // MARK - UI  (Create button)
     func setupUI(){
+        //Creamos botones
         let wikiButton=UIBarButtonItem(title: "Wiki", style: .plain, target: self, action:#selector(displayWiki))
-        //navigationItem.rightBarButtonItem=wikiButton
         let PersonsHouse=UIBarButtonItem(title: "Members", style: .plain, target: self, action: #selector(displayPersons))
+        //Añadimos los botones creados
         navigationItem.rightBarButtonItems=[wikiButton,PersonsHouse]
         
     }
-    
+    //Func asignada a botones
     @objc func displayWiki(){
         //Creamos el wikiVC
         let wikiVC=WikiViewController(model: model)
