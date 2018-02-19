@@ -34,7 +34,10 @@ extension Person{
 }
 // MARK: - proxies
 extension Person{
-    var proxy:String{
+    var proxyForEquatable:String{
+        return "\(name)\(alias)\(house.name)"
+    }
+    var proxyForComparision:String{
         return "\(name)\(alias)\(house.name)"
     }
 }
@@ -47,7 +50,14 @@ extension Person:Hashable{
 // MARK: - Equatable
 extension Person:Equatable{
     static func ==(lhs: Person, rhs: Person) -> Bool {
-        return lhs.proxy == rhs.proxy
+        return lhs.proxyForEquatable == rhs.proxyForEquatable
+    }
+}
+
+//MARK: - Comparable
+extension Person:Comparable{
+    static func <(lhs: Person, rhs: Person) -> Bool {
+        return lhs.proxyForComparision < rhs.proxyForComparision
     }
 }
 
