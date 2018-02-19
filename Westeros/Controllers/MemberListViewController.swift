@@ -64,6 +64,17 @@ extension MemberListViewController: UITableViewDataSource {
         // Devolver la celda
         return cell
     }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        //Que casa han pulsado
+//        let person=Persons[indexPath.row]
+//        //Crear un controlador de detalle de la casa
+//        let WikiViewVC=WikiViewController(model:person)
+//        //Hacer un push
+//        navigationController?.pushViewController(WikiViewVC, animated: true)
+//    }
+    
+    
+    
 }
     
     extension MemberListViewController:UITableViewDelegate{

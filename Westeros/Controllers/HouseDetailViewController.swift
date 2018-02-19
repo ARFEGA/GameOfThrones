@@ -67,6 +67,8 @@ class HouseDetailViewController: UIViewController {
     }
     @objc func displayMembers(){
         //Creamos el wikiVC
+        let membersVC=MemberListViewController(model: model.sortedMembers)
+        navigationController?.pushViewController(membersVC, animated: true)
         
     }
     
