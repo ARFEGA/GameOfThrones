@@ -38,7 +38,7 @@ extension House{
     var count:Int{
         return _members.count
     }
-    var sortedMembers:House{
+    var sortedMembers:[Person]{
         return _members.sorted()
     }
     
