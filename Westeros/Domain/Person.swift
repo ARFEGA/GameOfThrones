@@ -38,13 +38,13 @@ extension Person{
         return "\(name)\(alias)\(house.name)"
     }
     var proxyForComparision:String{
-        return "\(name)\(alias)\(house.name)"
+        return fullName
     }
 }
 // MARK: - Hashable
 extension Person:Hashable{
     var hashValue:Int{
-        return proxy.hashValue
+        return proxyForEquatable.hashValue
     }
 }
 // MARK: - Equatable
