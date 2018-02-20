@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class HouseDetailViewController: UIViewController {
     
     // MARK: - OUTLET
@@ -17,7 +19,7 @@ class HouseDetailViewController: UIViewController {
     @IBOutlet weak var wordsLabel: UILabel!
     
     //Mark: - Properties
-    let model:House
+    var model:House
     
     //Mark: - Initialization de la clase HouseDetailViewController
     init(model:House){
@@ -72,28 +74,11 @@ class HouseDetailViewController: UIViewController {
         
     }
     
-    
-    
-    
-    
-    
-    
-    //Recibe avisos de utilización excesiva de memoria. Debemos liberar, pues el sistema mata la app
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-        // Dispose of any resources that can be recreated.
-        
-    }
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+}
+extension HouseDetailViewController:HouseListViewControllerDelegate{
+    func houseListViewController(_ vc: HouseListViewController, didSelectHouse house: House) {
+        self.model=house
+        syncModelWithView()
     }
-    */
-
 }

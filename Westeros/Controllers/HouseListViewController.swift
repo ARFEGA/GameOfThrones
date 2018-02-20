@@ -8,10 +8,22 @@
 
 import UIKit
 
-class HouseListViewController: UITableViewController {
+
+let HOUSE_DID_CHANGE_NOTIFICATION_NAME="HouseDidChange"
+let HOUSE_KEY="HouseKey"
+protocol HouseListViewControllerDelegate{
+    func houseListViewController(_ vc:HouseListViewController,didSelectHouse:House)
     
+}
+
+
+
+class HouseListViewController: UITableViewController {
     // MARK - Properties
     let model:[House]
+    var delegate:HouseListViewControllerDelegate?
+    
+    
     
     //MARK: - Initialization
     init(model:[House])
@@ -63,11 +75,22 @@ class HouseListViewController: UITableViewController {
         //Que casa han pulsado
         let house=model[indexPath.row]
         //Crear un controlador de detalle de la casa
-        let houseDetailVC=HouseDetailViewController(model:house)
+        //let houseDetailVC=HouseDetailViewController(model:house)
         //Hacer un push
-        navigationController?.pushViewController(houseDetailVC, animated: true)
+        //navigationController?.pushViewController(houseDetailVC, animated: true)
+        
+        //Avisamos al delegado para que ejecute lo que sea
+        delegate?.houseListViewController(self, didSelectHouse: house)
+        
+        //Otra manera distinta al delegado para enviar notifficaciones =>notificaciones
+        //Pero es más indirecto que un delegate, ya que el delegate asocia los dos elementos asociados
+        //Mejor siempre con delegate
+        let notificationCenter=NotificationCenter.default
+        let notification=Notification(name: Notification.Name(HOUSE_DID_CHANGE_NOTIFICATION_NAME), object: self,
+                                      userInfo: [HOUSE_KEY:house])
+        notificationCenter.post(notification)
     }
-    
+}
 
     /*
     // Override to support conditional editing of the table view.
@@ -114,4 +137,4 @@ class HouseListViewController: UITableViewController {
     }
     */
     
-}
+

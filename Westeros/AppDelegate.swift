@@ -25,15 +25,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Creamos un modelo
         let houses=Repository.local.houses
         
+        //Creamos los controladores
+        let houseListVC=HouseListViewController(model:houses)
+        let houseDetailVC=HouseDetailViewController(model:houses.first!)//Solo muestra el primer elemento
+        
+        //Asignamos delegados
+        houseListVC.delegate=houseDetailVC
+        
+        //Crear el split
+        let splitVC=UISplitViewController()
+        splitVC.viewControllers=[houseListVC.wrappedInNavigation(),houseDetailVC.wrappedInNavigation()]
+        
         //VC de la tabla
-        let housesListVC=HouseListViewController(model: houses)
+        //let housesListVC=HouseListViewController(model: houses)
         
         //Asignamos el VC a root de la ventana y metemos la tabla en un navigation
-        window?.rootViewController = housesListVC.wrappedInNavigation()
+        //window?.rootViewController = housesListVC.wrappedInNavigation()
         
+        window?.rootViewController = splitVC
         
-        
-        
+        return true
         
         
         
@@ -85,7 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //window?.rootViewController=tabBarViewController
        
         
-        return true
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
