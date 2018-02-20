@@ -25,13 +25,15 @@ protocol SerieFactory{
 final class LocalFactory : SerieFactory{
     var seasons: [Season]{
         //MARK: - Seasons
-        let season1=Season(number: 1, name: "Season One", date: Date())
+        
+        let season1=Season(number: 1, name: "Season One", date:Date().buildShortDateFromArguments(day: 1, month: .December, year: 2017))
         let season2=Season(number: 2, name: "Season Two", date: Date())
         let season3=Season(number: 3, name: "Season Three", date: Date())
         let season4=Season(number: 4, name: "Season Four", date: Date())
         let season5=Season(number: 5, name: "Season Five", date: Date())
         let season6=Season(number: 6, name: "Season Six", date: Date())
         let season7=Season(number: 7, name: "Season Seven", date: Date())
+        
     
         //MARK: - Episodes
         let E1S1=Episode(title: "Winter is comming", emissionDate:Date(), season: season1)
