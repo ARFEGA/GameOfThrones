@@ -27,7 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Creamos los controladores
         let houseListVC=HouseListViewController(model:houses)
-        let houseDetailVC=HouseDetailViewController(model:houses.first!)//Solo muestra el primer elemento
+        
+        let lastSelectedHouse=houseListVC.lastSelectedHouse()
+        //let houseDetailVC=HouseDetailViewController(model:houses.first!)//Solo muestra el primer elemento
+        let houseDetailVC=HouseDetailViewController(model:lastSelectedHouse)//Solo muestra el primer elemento
         
         //Asignamos delegados
         houseListVC.delegate=houseDetailVC

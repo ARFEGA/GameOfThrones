@@ -14,7 +14,7 @@ class MemberListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - PROPERTIES
-    let model:[Person]
+    var model:[Person]
     
     // MARK: - INITIALIZATION
     
@@ -33,11 +33,38 @@ class MemberListViewController: UIViewController {
     // MARK: -Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
+        //tableView.delegate = self
         tableView.dataSource = self
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //Alta en notificaciones
+        let notificationCenter=NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(houseDidChange(notification:)), name: NSNotification.Name(rawValue: HOUSE_DID_CHANGE_NOTIFICATION_NAME), object: nil)
+        
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        //Baja en notificaciones . Otra posibilidad es en el deInit() <= buscar en internet
+        NotificationCenter.default.removeObserver(self)
+        //NotificationCenter.default.removeObserver(self, name: Notification.Name(HOUSE_DID_CHANGE_NOTIFICATION_NAME), object: nil)
+        
+    }
+    
+    @objc func houseDidChange(notification: Notification) {
+        // userInfo is the payload send by sender of notification
+        if let userInfo = notification.userInfo {
+            // Safely unwrap the name sent out by the notification sender
+            let house = userInfo[HOUSE_KEY] as! House
+            self.model = house.sortedMembers
+            tableView.dataSource = self
+        }
+    }
 }
+
+
 // MARK: - UITableViewDataSource
 extension MemberListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -77,9 +104,7 @@ extension MemberListViewController: UITableViewDataSource {
     
 }
     
-    extension MemberListViewController:UITableViewDelegate{
-        
-    }
+
     
     
     

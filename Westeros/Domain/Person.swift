@@ -10,7 +10,7 @@ import Foundation
 
 final class Person{
     let name : String
-    let house: House
+    let house: House//Poner esta a weak 
     private let _alias: String?
     
     var alias:String{

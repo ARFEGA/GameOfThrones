@@ -140,9 +140,9 @@
 		47479F6B202CE4D500EC3F27 /* Westeros */ = {
 			isa = PBXGroup;
 			children = (
+				472381BA20323918001944C1 /* Image */,
 				47BCCD8220337C1E00048C01 /* UIKitExtensions */,
 				472381BF20323AAD001944C1 /* Controllers */,
-				472381BA20323918001944C1 /* Image */,
 				472381B920323910001944C1 /* Domain */,
 				47479F6C202CE4D500EC3F27 /* AppDelegate.swift */,
 				47479F75202CE4D500EC3F27 /* LaunchScreen.storyboard */,
