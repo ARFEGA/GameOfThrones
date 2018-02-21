@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let lastSelectedHouse=houseListVC.lastSelectedHouse()
         //let houseDetailVC=HouseDetailViewController(model:houses.first!)//Solo muestra el primer elemento
-        let houseDetailVC=HouseDetailViewController(model:lastSelectedHouse)//Solo muestra el primer elemento
+        let houseDetailVC=HouseDetailViewController(model:lastSelectedHouse)
         
         //Asignamos delegados
         houseListVC.delegate=houseDetailVC
@@ -46,7 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //window?.rootViewController = housesListVC.wrappedInNavigation()
         
         window?.rootViewController = splitVC
-        
+        UINavigationBar.appearance().backgroundColor = .blue
+        UINavigationBar.appearance()
         return true
         
         

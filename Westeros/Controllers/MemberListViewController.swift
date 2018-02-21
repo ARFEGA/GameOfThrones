@@ -42,8 +42,16 @@ class MemberListViewController: UIViewController {
         super.viewWillAppear(animated)
         //Alta en notificaciones
         let notificationCenter=NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(houseDidChange(notification:)), name: NSNotification.Name(rawValue: HOUSE_DID_CHANGE_NOTIFICATION_NAME), object: nil)
-        
+        //notificationCenter.addObserver(self, selector: #selector(houseDidChange), name: Notification.Name(rawValue: HOUSE_DID_CHANGE_NOTIFICATION_NAME), object: nil)
+        notificationCenter.addObserver(forName: .NotificationName, object: nil, queue: OperationQueue.main) { (notification) in
+            // userInfo is the payload send by sender of notification
+            if let userInfo = notification.userInfo {
+                // Safely unwrap the name sent out by the notification sender
+                let house = userInfo[HOUSE_KEY] as! House
+                self.model = house.sortedMembers
+                self.tableView.reloadData()
+            }
+        }
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

@@ -11,5 +11,11 @@ import UIKit
 extension UIViewController{
     func wrappedInNavigation()->UINavigationController{
             return UINavigationController(rootViewController: self)
+        
     }
+}
+
+extension Notification.Name{
+   static let NotificationName=Notification.Name(HOUSE_DID_CHANGE_NOTIFICATION_NAME)
+    
 }

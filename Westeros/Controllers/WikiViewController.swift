@@ -47,7 +47,7 @@ class WikiViewController: UIViewController {
         super.viewWillAppear(animated)
         //Alta en notificaciones
         let notificationCenter=NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(houseDidChange(notification:)), name: NSNotification.Name(rawValue: HOUSE_DID_CHANGE_NOTIFICATION_NAME), object: nil)
+        notificationCenter.addObserver(self, selector: #selector(houseDidChange), name: Notification.Name(rawValue: HOUSE_DID_CHANGE_NOTIFICATION_NAME), object: nil)
         
     }
     override func viewWillDisappear(_ animated: Bool) {
