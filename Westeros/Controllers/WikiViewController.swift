@@ -15,17 +15,15 @@ class WikiViewController: UIViewController {
 
     //MARK: - outlets
     @IBOutlet weak var webView: WKWebView!
-   
     @IBOutlet weak var aIndicatorView: UIActivityIndicatorView!
     
    //MARK: - Properties
-    var model:House
-    
+    var allmodel:AnyObject
     
     //MARK: - Initialization
-    init(model:House)
+    init(model:AnyObject)
     {
-        self.model=model
+        self.allmodel=model
         //Siempre llamar a super.init
         super.init(nibName: nil, bundle: nil)
     }
@@ -47,7 +45,16 @@ class WikiViewController: UIViewController {
         super.viewWillAppear(animated)
         //Alta en notificaciones
         let notificationCenter=NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(houseDidChange), name: Notification.Name(rawValue: HOUSE_DID_CHANGE_NOTIFICATION_NAME), object: nil)
+        notificationCenter.addObserver(forName: .NotificationName, object: nil, queue: OperationQueue.main) { (notification) in
+            // userInfo is the payload send by sender of notification
+            if let userInfo = notification.userInfo {
+                //Sacar la casa
+                self.allmodel = userInfo[HOUSE_KEY] as! House
+            }
+            //Actualizar el modelo
+            self.syncModelWithView()
+            }
+//        notificationCenter.addObserver(self, selector: #selector(houseDidChange), name: Notification.Name(rawValue: HOUSE_DID_CHANGE_NOTIFICATION_NAME), object: nil)
         
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -58,29 +65,24 @@ class WikiViewController: UIViewController {
         
     }
     @objc func houseDidChange(notification: Notification) {
-        //let sender=notification.object
-        // We only want to process notifications when sent by the object of type AuthorizedUser
-        //guard (sender as? Dictionary) != nil else {
-        //    return
-        //}
-        // userInfo is the payload send by sender of notification
         //Asegurar la extracción de userInfo
         if let userInfo = notification.userInfo {
             // Safely unwrap the name sent out by the notification sender
             //Sacar la casa
-            self.model = userInfo[HOUSE_KEY] as! House
+            self.allmodel = userInfo[HOUSE_KEY] as! House
         }
         //Actualizar el modelo
         syncModelWithView()
-       
     }
-    
-    
     //MARK: - Sync
     func syncModelWithView(){
-        title=model.name
-        webView.load(URLRequest(url:model.wikiURL))
-      
+        var url : URL
+        if (allmodel is House){
+            url = (allmodel as! House).wikiURL
+        } else{
+            url = (allmodel as! Person).wikiURL
+        }
+        webView.load(URLRequest(url:url))
     }
     
 }

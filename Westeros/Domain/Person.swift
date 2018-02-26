@@ -6,11 +6,13 @@
 //  Copyright © 2018 ARMANDO. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 final class Person{
     let name : String
-    let house: House//Poner esta a weak 
+    let house: House//Poner esta a weak
+    let personImage:UIImage
+    let wikiURL:URL
     private let _alias: String?
     
     var alias:String{
@@ -20,10 +22,12 @@ final class Person{
         //if let _alias=_alias{return _alias}else{return ""}
     }
     // MARK : - Inicializadores
-    init(name:String, alias:String?=nil , house:House){
+    init(name:String, alias:String?=nil , house:House,personImage:UIImage,wikiURL:URL){
         self.name=name
         _alias=alias
         self.house=house
+        self.personImage=personImage
+        self.wikiURL=wikiURL
     }
 }
 

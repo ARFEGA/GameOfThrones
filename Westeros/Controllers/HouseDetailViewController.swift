@@ -37,9 +37,7 @@ class HouseDetailViewController: UIViewController {
     //Conrola el ciclo de vida de un objeto. Que es desde que se crea el objeto hasta que muere
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-        
+        syncModelWithView()
     }
     
     //MARK: - Sync
@@ -53,12 +51,13 @@ class HouseDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupUI()
-         syncModelWithView()
+        syncModelWithView()
     }
     // MARK - UI  (Create button)
     func setupUI(){
         let wikiButton=UIBarButtonItem(title: "Wiki", style: .plain, target: self, action:#selector(displayWiki))
         let members=UIBarButtonItem(title: "Members", style: .plain, target: self, action:#selector(displayMembers))
+       
         navigationItem.rightBarButtonItems=[wikiButton,members]
     }
     
@@ -71,14 +70,36 @@ class HouseDetailViewController: UIViewController {
         //Creamos el wikiVC
         let membersVC=MemberListViewController(model: model.sortedMembers)
         navigationController?.pushViewController(membersVC, animated: true)
-        
     }
+   
     
 
 }
 extension HouseDetailViewController:HouseListViewControllerDelegate{
-    func houseListViewController(_ vc: HouseListViewController, didSelectHouse house: House) {
+    func funcDelegateHouseListViewController(_ vc: HouseListViewController, didSelectHouse house: House) {
         self.model=house
-        syncModelWithView()
+        
+        switch UIApplication.shared.statusBarOrientation {
+            //En estado PORTRAIT
+            case .portrait,.portraitUpsideDown:
+                //let aVariable = appDelegate.value
+                //let vc = (appDelegate.ViewsState?.VCs[1].wrappedInNavigation())!
+                //appDelegate.splitVC?.collapseSecondaryViewController(vc, for: appDelegate.splitVC!)
+                
+                
+                break
+            //En estado LANDSCAPE
+            case .landscapeLeft,.landscapeRight:
+                syncModelWithView()
+                //let aVariable = appDelegate.value
+                //appDelegate.splitVC?.show((appDelegate.ViewsState?.secondaryViewSplit).wrappedInNavigation(), sender: self)
+                break
+            case .unknown:
+                break
+        }
+        
+        
     }
 }
+
+

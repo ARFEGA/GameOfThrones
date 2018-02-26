@@ -9,51 +9,71 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate,UISplitViewControllerDelegate {
 
     var window: UIWindow?
-
+    //var splitVC: splitVController?
+    var ViewsState:viewsState?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         //guard let window=window else {
         //    return true
         //}
-        window=UIWindow(frame: UIScreen.main.bounds)
-        window?.backgroundColor = UIColor.blue
-        window?.makeKeyAndVisible()
-        
-        //Creamos un modelo
-        let houses=Repository.local.houses
-        
-        //Creamos los controladores
-        let houseListVC=HouseListViewController(model:houses)
-        
-        let lastSelectedHouse=houseListVC.lastSelectedHouse()
-        //let houseDetailVC=HouseDetailViewController(model:houses.first!)//Solo muestra el primer elemento
-        let houseDetailVC=HouseDetailViewController(model:lastSelectedHouse)
-        
-        //Asignamos delegados
-        houseListVC.delegate=houseDetailVC
-        
-        //Crear el split
+       
         let splitVC=UISplitViewController()
-        splitVC.viewControllers=[houseListVC.wrappedInNavigation(),houseDetailVC.wrappedInNavigation()]
         
-        //VC de la tabla
-        //let housesListVC=HouseListViewController(model: houses)
         
-        //Asignamos el VC a root de la ventana y metemos la tabla en un navigation
-        //window?.rootViewController = housesListVC.wrappedInNavigation()
+       
         
-        window?.rootViewController = splitVC
-        UINavigationBar.appearance().backgroundColor = .blue
-        UINavigationBar.appearance()
+        //MARK:- CREATE_DATA
+        let arraySeasons=Repository.local.seasons
+        let houses=Repository.local.houses
+        let arrayEpisodes=arraySeasons[0].sortedEpisodes
+        
+        
+        
+        //MARK: - CREATE_VC
+        let houseListVC=HouseListViewController(model:houses)
+        let lastSelectedHouse=houseListVC.lastSelectedHouse()
+        let houseDetailVC=HouseDetailViewController(model:lastSelectedHouse)
+        let _episodesListVC=episodesListVC(arrayEpisodes: arrayEpisodes)
+        let seasonListVC=SeasonListViewController(model: arraySeasons)
+        
+        
+        //MARK: - CREATE UITabBarController
+        let tabBarVC = UITabBarController()
+        tabBarVC.viewControllers=[seasonListVC.wrappedInNavigation(),houseListVC.wrappedInNavigation()]
+        
+        
+        
+        //MARK: - STRUCT ViewsState
+        let VCs:[UIViewController]=[_episodesListVC,houseDetailVC]
+        ViewsState = viewsState(
+            primaryViewSplit: tabBarVC,
+            secondaryViewSplit: _episodesListVC.wrappedInNavigation(),
+            auxViewSplit: houseDetailVC.wrappedInNavigation(),
+            VCs: VCs ,
+            clickedButtonBarTab: 0)
+       
+        //MARK: - CREATE split
+        
+        //splitVC=splitVController(primaryVC: ViewsState?.primaryViewSplit, secondaryVC:ViewsState?.secondaryViewSplit)
+        
+        //MARK: - DELEGATES ASIGNED
+        houseListVC.delegate=houseDetailVC
+        seasonListVC.delegate=_episodesListVC
+        tabBarVC.delegate = self
+        splitVC.delegate=self
+        splitVC.viewControllers=[tabBarVC]
+        
+        
+        window=UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        window?.rootViewController = tabBarVC
         return true
-        
-        
-        
-        
-        
+        //let navigationController = splitVC!.viewControllers[splitVC!.viewControllers.count-1] as! UINavigationController
+        //navigationController.topViewController!.navigationItem.leftBarButtonItem = splitVC!.displayModeButtonItem()
+        //tabBarViewController.viewControllers    = [starkHouseVC.wrappedInNavigation(),lannisterHouseVC.wrappedInNavigation()
         //        let tabBarViewController=UITabBarController()
         //        tabBarViewController.viewControllers =
         //            houses
@@ -68,40 +88,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //for house in houses{
         //    controllers.append(HouseDetailViewController(model:house).wrappedInNavigation())
         //}
-        
-        //Crear unos modelos
-        //let starkSigil=Sigil(image:UIImage(named:"codeIsComing.png")!,description:"Lobo Huargo")
-        //let starkHouse=House(name: "Stark", sigil: starkSigil, words: "Se acerca el invierno")
-        //let lannisterSigil=Sigil(image:UIImage(named:"lannister.jpg")!,description:"Leon Rampante")
-        //let lannisterHouse=House(name: "Lannister", sigil: lannisterSigil, words: "Oye mi rugido")
-        
-        //Crear los controladores
-        //let starkHouseVC=HouseDetailViewController(model: starkHouse)
-        //let lannisterHouseVC=HouseDetailViewController(model: lannisterHouse)
-        //var navigationsControllers=[UINavigationController]()
-        //for controller in controllers{
-        //    navigationsControllers.append(controller.wrappedInNavigation())
-        //}
-        
-        //Creamos los navigations
-        //let starkNavigationController=UINavigationController(rootViewController: starkHouseVC)
-        //let lannisterNavigationController=UINavigationController(rootViewController: lannisterHouseVC)
-        
-        //Creamos los combinadores
-        
-        //Los objetos entre corchetes, llamana a la función wrappedInNavigation (función creada en Extension creada por nosotros en UIKitExtensions), que devuelve el VC embuelto en un navigation controler.
-        //tabBarViewController.viewControllers    = [starkHouseVC.wrappedInNavigation(),lannisterHouseVC.wrappedInNavigation()]
-        //tabBarViewController.viewControllers    = [starkNavigationController,lannisterNavigationController]
-        
-        
-        
-        
-        //Asignamos el rootVC
-        //window?.rootViewController=tabBarViewController
        
         
         
     }
+    
+    
+  
+    func splitViewController(_ splitViewController: UISplitViewController, separateSecondaryFrom primaryViewController: UIViewController) -> UIViewController? {
+
+        let index=(ViewsState?.clickedButtonBarTab)!
+
+        return ViewsState?.VCs[index].wrappedInNavigation()
+    }
+
+    func primaryViewController(forCollapsing splitViewController: UISplitViewController) -> UIViewController? {
+        return ViewsState?.primaryViewSplit
+    }
+    func primaryViewController(forExpanding splitViewController: UISplitViewController) -> UIViewController? {
+        return ViewsState?.primaryViewSplit
+    }
+   
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        ViewsState?.clickedButtonBarTab = tabBarController.selectedIndex
+        switch UIApplication.shared.statusBarOrientation {
+        //En estado PORTRAIT
+        case .portrait,.portraitUpsideDown:
+            break
+         //En estado LANDSCAPE
+        case .landscapeLeft,.landscapeRight:
+            //splitVC?.showDetailViewController( (ViewsState?.VCs[tabBarController.selectedIndex].wrappedInNavigation())!, sender:self)
+            break
+        case .unknown:
+            break
+        }
+       
+        
+    }
+
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

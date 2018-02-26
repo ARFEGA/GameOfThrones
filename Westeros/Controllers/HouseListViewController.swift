@@ -12,8 +12,9 @@ import UIKit
 let HOUSE_DID_CHANGE_NOTIFICATION_NAME="HouseDidChange"
 let HOUSE_KEY="HouseKey"
 let LAST_HOUSE="Last_House"
-protocol HouseListViewControllerDelegate:AnyObject{//AnyObject es lo mismp que class
-    func houseListViewController(_ vc:HouseListViewController,didSelectHouse:House)
+//AnyObject es lo mismp que class. Es necesaro que herede así para pode hacer una referencia weak
+protocol HouseListViewControllerDelegate:AnyObject{
+    func funcDelegateHouseListViewController(_ vc:HouseListViewController,didSelectHouse:House)
     
 }
 
@@ -22,8 +23,7 @@ protocol HouseListViewControllerDelegate:AnyObject{//AnyObject es lo mismp que c
 class HouseListViewController: UITableViewController {
     // MARK - Properties
     let model:[House]
-    weak var delegate:HouseListViewControllerDelegate?  //Para que se suelte memoria correctamente
-    
+    weak var delegate:HouseListViewControllerDelegate?  //weak Para que se suelte memoria correctamente
     
     
     //MARK: - Initialization
@@ -32,7 +32,7 @@ class HouseListViewController: UITableViewController {
         self.model=model
         //Siempre llamar a super.init
         super.init(style: .grouped)
-        title="Westeros"
+        title="HOUSES"
     }
     //Obligatorio
     required init?(coder aDecoder: NSCoder) {
@@ -88,14 +88,13 @@ class HouseListViewController: UITableViewController {
         //navigationController?.pushViewController(houseDetailVC, animated: true)
         
         //Avisamos al delegado para que ejecute lo que sea
-        delegate?.houseListViewController(self, didSelectHouse: house)
+        delegate?.funcDelegateHouseListViewController(self, didSelectHouse: house)
         
         //Otra manera distinta al delegado para enviar notifficaciones =>notificaciones
         //Pero es más indirecto que un delegate, ya que el delegate asocia los dos elementos asociados
         //Mejor siempre con delegate
         let notificationCenter=NotificationCenter.default
-        let notification=Notification(name: Notification.Name(HOUSE_DID_CHANGE_NOTIFICATION_NAME), object: self,
-                                      userInfo: [HOUSE_KEY:house])
+        let notification=Notification(name: Notification.Name(HOUSE_DID_CHANGE_NOTIFICATION_NAME), object: self,userInfo: [HOUSE_KEY:house])
         notificationCenter.post(notification)
         //Persistencia-> Guardar las coordenadas de la UITableView (section y row seleccionadas)
         saveLastSelectedHouse(at:indexPath.row)
@@ -103,9 +102,6 @@ class HouseListViewController: UITableViewController {
     
     
 }
-
-
-
 extension HouseListViewController{
     func saveLastSelectedHouse(at row:Int){
         let defaults=UserDefaults.standard
@@ -126,50 +122,5 @@ extension HouseListViewController{
 }
 
 
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
 
