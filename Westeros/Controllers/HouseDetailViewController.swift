@@ -37,6 +37,7 @@ class HouseDetailViewController: UIViewController {
     //Conrola el ciclo de vida de un objeto. Que es desde que se crea el objeto hasta que muere
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
         syncModelWithView()
     }
     
@@ -50,7 +51,7 @@ class HouseDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupUI()
+        //setupUI()
         syncModelWithView()
     }
     // MARK - UI  (Create button)
@@ -78,7 +79,7 @@ class HouseDetailViewController: UIViewController {
 extension HouseDetailViewController:HouseListViewControllerDelegate{
     func funcDelegateHouseListViewController(_ vc: HouseListViewController, didSelectHouse house: House) {
         self.model=house
-        
+        syncModelWithView()
         switch UIApplication.shared.statusBarOrientation {
             //En estado PORTRAIT
             case .portrait,.portraitUpsideDown:
@@ -90,7 +91,7 @@ extension HouseDetailViewController:HouseListViewControllerDelegate{
                 break
             //En estado LANDSCAPE
             case .landscapeLeft,.landscapeRight:
-                syncModelWithView()
+                
                 //let aVariable = appDelegate.value
                 //appDelegate.splitVC?.show((appDelegate.ViewsState?.secondaryViewSplit).wrappedInNavigation(), sender: self)
                 break
