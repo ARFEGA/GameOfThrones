@@ -36,8 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         let houseListVC=HouseListViewController(model:houses)
         let lastSelectedHouse=houseListVC.lastSelectedHouse()
         let houseDetailVC=HouseDetailViewController(model:lastSelectedHouse)
+         let seasonListVC=SeasonListViewController(model: arraySeasons)
         let _episodesListVC=episodesListVC(arrayEpisodes: arrayEpisodes)
-        let seasonListVC=SeasonListViewController(model: arraySeasons)
+       
         
         
         //MARK: - CREATE UITabBarController
