@@ -24,7 +24,6 @@ class HouseDetailViewController: UIViewController {
     //Mark: - Initialization de la clase HouseDetailViewController
     init(model:House){
         self.model=model
-        
         super.init(nibName:nil,bundle:Bundle(for: type(of:self)))
         //Conseguimos que se cargue el titulo de el resto de pestañas (tabBar) aunque no esté pintadas
         self.title=model.name
@@ -34,34 +33,39 @@ class HouseDetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //Conrola el ciclo de vida de un objeto. Que es desde que se crea el objeto hasta que muere
     override func viewDidLoad() {
         super.viewDidLoad()
+      
+        
+        
+    }
+    // Mark: - Life Cycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setupUI()
         syncModelWithView()
     }
     
-    //MARK: - Sync
-    func syncModelWithView(){
-        houseNameLabel.text="House \(model.name)"
-        sigilImageView.image=model.sigil.image
-        wordsLabel.text=model.words
-        self.title=model.name
+    // Mark: - Sync
+    func syncModelWithView() {
+        // Model -> View
+        houseNameLabel.text = "House \(model.name)"
+        sigilImageView.image = model.sigil.image
+        wordsLabel.text = model.words
+        title=model.name
+        
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        //setupUI()
-        syncModelWithView()
-    }
+  
     // MARK - UI  (Create button)
     func setupUI(){
         let wikiButton=UIBarButtonItem(title: "Wiki", style: .plain, target: self, action:#selector(displayWiki))
         let members=UIBarButtonItem(title: "Members", style: .plain, target: self, action:#selector(displayMembers))
-       
-        navigationItem.rightBarButtonItems=[wikiButton,members]
+        [wikiButton,members].forEach({ (button:UIBarButtonItem) in
+            button.tintColor=UIColor(red:0.20, green:0.20, blue:0.00, alpha:1.0)
+            })
+        navigationItem.rightBarButtonItems = [wikiButton,members]
+        
     }
-    
     @objc func displayWiki(){
         //Creamos el wikiVC
         let wikiVC=WikiViewController(model: model)

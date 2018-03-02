@@ -25,22 +25,29 @@ class MemberListViewController: UIViewController {
     // MARK: -Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        //tableView.delegate = self
+        tableView.delegate = self
         tableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+       
         //Alta en notificaciones
         let notificationCenter=NotificationCenter.default
         //notificationCenter.addObserver(self, selector: #selector(houseDidChange), name: Notification.Name(rawValue: HOUSE_DID_CHANGE_NOTIFICATION_NAME), object: nil)
-        notificationCenter.addObserver(forName: .NotificationName, object: nil, queue: OperationQueue.main) { (notification) in
+        notificationCenter.addObserver(forName: Notification.Name(rawValue: HOUSE_DID_CHANGE_NOTIFICATION_NAME), object: nil, queue: OperationQueue.main) { (notification) in
             // userInfo is the payload send by sender of notification
             if let userInfo = notification.userInfo {
                 // Safely unwrap the name sent out by the notification sender
                 let house = userInfo[HOUSE_KEY] as! House
                 self.PersonsModel = house.sortedMembers
                 self.tableView.reloadData()
+                self.title=house.name
+                let backItem = UIBarButtonItem()
+                backItem.title = self.title
+                self.navigationItem.backBarButtonItem = backItem
+                
             }
         }
     }
@@ -75,12 +82,6 @@ extension MemberListViewController: UITableViewDataSource {
         
         // Descubrir la persona que tenemos que mostrar
         let selectedPerson = PersonsModel[indexPath.row]
-        
-        // Preguntar por una celda (a una cache) o Crearla
-        //        var cell = tableView.dequeueReusableCell(withIdentifier: cellId)
-        //        if cell == nil {
-        //            cell = UITableViewCell(style: .default, reuseIdentifier: cellId)
-        //        }
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId)
             ?? UITableViewCell(style: .default, reuseIdentifier: cellId)
         
@@ -91,8 +92,9 @@ extension MemberListViewController: UITableViewDataSource {
         // Devolver la celda
         return cell
     }
-    
-     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+}
+extension MemberListViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //Que casa han pulsado
         let person=PersonsModel[indexPath.row]
         //Crear un controlador de detalle de la casa
@@ -100,6 +102,7 @@ extension MemberListViewController: UITableViewDataSource {
         //Hacer un push
         navigationController?.pushViewController(WikiViewVC, animated: true)
     }
+  
 }
 
     

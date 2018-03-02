@@ -14,9 +14,9 @@ import UIKit
 typealias Words = String
 
 //Con set, alamacenamos elementos y no permite que estén duplicados a dierencia de un array
-typealias Members = Set<Person>
+ typealias Members = Set<Person>
 
-final class House{
+final class House {
     let name:String
     let sigil: Sigil
     let words:Words
@@ -30,8 +30,18 @@ final class House{
         self.words=words
         self.wikiURL=url
         _members=Members()
-        
     }
+//    private enum CodingKeys: String, CodingKey {
+//        case name = "first_name"
+//        case lastName = "last_name"
+//        case age
+//    }
+//
+//    required init(from decoder:Decoder) throws {
+//        let values = try decoder.container(keyedBy: CodingKeys.self)
+//        indexPath = try values.decode([Int].self, forKey: .indexPath)
+//        locationInText = try values.decode(Int.self, forKey: .locationInText)
+//    }
 }
 
 extension House{

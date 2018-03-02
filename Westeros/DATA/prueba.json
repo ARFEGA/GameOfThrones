@@ -1,0 +1,9 @@
+{
+    "beer":
+    {
+        "name": "Endeavor",
+        "abv": 8.9,
+        "brewery": "Saint Arnold",
+        "style": "ipa"
+    }
+}

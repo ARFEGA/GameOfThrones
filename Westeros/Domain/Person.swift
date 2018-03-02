@@ -28,6 +28,8 @@ final class Person{
         self.house=house
         self.personImage=personImage
         self.wikiURL=wikiURL
+        //MARK: - 11 OPCIONAL
+        house.add(person: self)
     }
 }
 

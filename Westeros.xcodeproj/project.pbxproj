@@ -16,6 +16,9 @@
 		472381B8203238A3001944C1 /* lannister.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 472381B5203238A3001944C1 /* lannister.jpg */; };
 		472381BD20323A8A001944C1 /* HouseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472381BB20323A8A001944C1 /* HouseDetailViewController.swift */; };
 		472381BE20323A8A001944C1 /* HouseDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 472381BC20323A8A001944C1 /* HouseDetailViewController.xib */; };
+		4734BF922044BEBA005E6C9A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4734BF912044BEBA005E6C9A /* Constants.swift */; };
+		4734BF952044C383005E6C9A /* SeasonDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4734BF932044C383005E6C9A /* SeasonDetailVC.swift */; };
+		4734BF962044C383005E6C9A /* SeasonDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4734BF942044C383005E6C9A /* SeasonDetailVC.xib */; };
 		47426DE62040C005001F5CAC /* episodesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47426DE42040C005001F5CAC /* episodesListVC.swift */; };
 		47426DE72040C005001F5CAC /* episodesListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47426DE52040C005001F5CAC /* episodesListVC.xib */; };
 		47479F6D202CE4D500EC3F27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47479F6C202CE4D500EC3F27 /* AppDelegate.swift */; };
@@ -34,6 +37,14 @@
 		4754B8D8202CFE0B005CE93F /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4754B8D7202CFE0B005CE93F /* Person.swift */; };
 		475802702041840D00ED64CA /* splitVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4758026E2041840D00ED64CA /* splitVController.swift */; };
 		475802712041840D00ED64CA /* splitVController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4758026F2041840D00ED64CA /* splitVController.xib */; };
+		47B5B983204865FF00901872 /* Tyrellpng.png in Resources */ = {isa = PBXBuildFile; fileRef = 47B5B97E204865FE00901872 /* Tyrellpng.png */; };
+		47B5B984204865FF00901872 /* Baratheon.png in Resources */ = {isa = PBXBuildFile; fileRef = 47B5B97F204865FF00901872 /* Baratheon.png */; };
+		47B5B985204865FF00901872 /* Mormon.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 47B5B980204865FF00901872 /* Mormon.PNG */; };
+		47B5B986204865FF00901872 /* Bolton.png in Resources */ = {isa = PBXBuildFile; fileRef = 47B5B981204865FF00901872 /* Bolton.png */; };
+		47B5B987204865FF00901872 /* Greyjoy.png in Resources */ = {isa = PBXBuildFile; fileRef = 47B5B982204865FF00901872 /* Greyjoy.png */; };
+		47B5B98A2048A23100901872 /* HOUSES.JSON in Resources */ = {isa = PBXBuildFile; fileRef = 47B5B9892048A23100901872 /* HOUSES.JSON */; };
+		47B5B98C2048C30700901872 /* prueba.json in Resources */ = {isa = PBXBuildFile; fileRef = 47B5B98B2048C30700901872 /* prueba.json */; };
+		47B5B98E2048C34B00901872 /* leeJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B5B98D2048C34B00901872 /* leeJson.swift */; };
 		47BCCD8420337CA000048C01 /* UIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BCCD8320337CA000048C01 /* UIViewController+Additions.swift */; };
 		47BCCD862033807D00048C01 /* RepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BCCD852033807D00048C01 /* RepositoryTests.swift */; };
 		47BCCD882033817700048C01 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BCCD872033817700048C01 /* Repository.swift */; };
@@ -70,6 +81,9 @@
 		472381B5203238A3001944C1 /* lannister.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = lannister.jpg; path = Westeros/Image/lannister.jpg; sourceTree = SOURCE_ROOT; };
 		472381BB20323A8A001944C1 /* HouseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseDetailViewController.swift; sourceTree = "<group>"; };
 		472381BC20323A8A001944C1 /* HouseDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HouseDetailViewController.xib; sourceTree = "<group>"; };
+		4734BF912044BEBA005E6C9A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4734BF932044C383005E6C9A /* SeasonDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonDetailVC.swift; sourceTree = "<group>"; };
+		4734BF942044C383005E6C9A /* SeasonDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeasonDetailVC.xib; sourceTree = "<group>"; };
 		47426DE42040C005001F5CAC /* episodesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = episodesListVC.swift; sourceTree = "<group>"; };
 		47426DE52040C005001F5CAC /* episodesListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = episodesListVC.xib; sourceTree = "<group>"; };
 		47479F69202CE4D500EC3F27 /* Westeros.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Westeros.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +106,14 @@
 		4754B8D7202CFE0B005CE93F /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		4758026E2041840D00ED64CA /* splitVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splitVController.swift; sourceTree = "<group>"; };
 		4758026F2041840D00ED64CA /* splitVController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = splitVController.xib; sourceTree = "<group>"; };
+		47B5B97E204865FE00901872 /* Tyrellpng.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tyrellpng.png; sourceTree = "<group>"; };
+		47B5B97F204865FF00901872 /* Baratheon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Baratheon.png; sourceTree = "<group>"; };
+		47B5B980204865FF00901872 /* Mormon.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mormon.PNG; sourceTree = "<group>"; };
+		47B5B981204865FF00901872 /* Bolton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bolton.png; sourceTree = "<group>"; };
+		47B5B982204865FF00901872 /* Greyjoy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Greyjoy.png; sourceTree = "<group>"; };
+		47B5B9892048A23100901872 /* HOUSES.JSON */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HOUSES.JSON; sourceTree = "<group>"; };
+		47B5B98B2048C30700901872 /* prueba.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = prueba.json; sourceTree = "<group>"; };
+		47B5B98D2048C34B00901872 /* leeJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leeJson.swift; sourceTree = "<group>"; };
 		47BCCD8320337CA000048C01 /* UIViewController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Additions.swift"; sourceTree = "<group>"; };
 		47BCCD852033807D00048C01 /* RepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTests.swift; sourceTree = "<group>"; };
 		47BCCD872033817700048C01 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
@@ -134,6 +156,7 @@
 				4754B8D3202CF1C2005CE93F /* House.swift */,
 				4754B8D7202CFE0B005CE93F /* Person.swift */,
 				47BCCD872033817700048C01 /* Repository.swift */,
+				47B5B98D2048C34B00901872 /* leeJson.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -141,6 +164,11 @@
 		472381BA20323918001944C1 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				47B5B97F204865FF00901872 /* Baratheon.png */,
+				47B5B981204865FF00901872 /* Bolton.png */,
+				47B5B982204865FF00901872 /* Greyjoy.png */,
+				47B5B980204865FF00901872 /* Mormon.PNG */,
+				47B5B97E204865FE00901872 /* Tyrellpng.png */,
 				47E536C0203EFAE800CAD929 /* Season_1.jpg */,
 				47E536BC203EFAE800CAD929 /* Season_2.jpg */,
 				47E536BD203EFAE800CAD929 /* Season_3.jpg */,
@@ -178,6 +206,8 @@
 				47426DE52040C005001F5CAC /* episodesListVC.xib */,
 				4758026E2041840D00ED64CA /* splitVController.swift */,
 				4758026F2041840D00ED64CA /* splitVController.xib */,
+				4734BF932044C383005E6C9A /* SeasonDetailVC.swift */,
+				4734BF942044C383005E6C9A /* SeasonDetailVC.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -203,8 +233,9 @@
 		47479F6B202CE4D500EC3F27 /* Westeros */ = {
 			isa = PBXGroup;
 			children = (
+				47B5B9882048A1BC00901872 /* DATA */,
 				472381BA20323918001944C1 /* Image */,
-				47BCCD8220337C1E00048C01 /* UIKitExtensions */,
+				47BCCD8220337C1E00048C01 /* Util */,
 				472381BF20323AAD001944C1 /* Controllers */,
 				472381B920323910001944C1 /* Domain */,
 				47479F6C202CE4D500EC3F27 /* AppDelegate.swift */,
@@ -225,12 +256,22 @@
 			path = WesterosTests;
 			sourceTree = "<group>";
 		};
-		47BCCD8220337C1E00048C01 /* UIKitExtensions */ = {
+		47B5B9882048A1BC00901872 /* DATA */ = {
+			isa = PBXGroup;
+			children = (
+				47B5B9892048A23100901872 /* HOUSES.JSON */,
+				47B5B98B2048C30700901872 /* prueba.json */,
+			);
+			path = DATA;
+			sourceTree = "<group>";
+		};
+		47BCCD8220337C1E00048C01 /* Util */ = {
 			isa = PBXGroup;
 			children = (
 				47BCCD8320337CA000048C01 /* UIViewController+Additions.swift */,
+				4734BF912044BEBA005E6C9A /* Constants.swift */,
 			);
-			path = UIKitExtensions;
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,22 +364,30 @@
 				47F4FFAA203B68DD00FFF652 /* MemberListViewController.xib in Resources */,
 				47546C1D203DCFF200433BCD /* Robb.jpg in Resources */,
 				472381B6203238A3001944C1 /* codeIsComing.png in Resources */,
+				47B5B985204865FF00901872 /* Mormon.PNG in Resources */,
 				47E536C5203EFAE800CAD929 /* Season_5.png in Resources */,
 				47E536C7203EFAE800CAD929 /* Season_1.jpg in Resources */,
 				472381BE20323A8A001944C1 /* HouseDetailViewController.xib in Resources */,
 				47479F77202CE4D500EC3F27 /* LaunchScreen.storyboard in Resources */,
 				47546C1F203DCFF200433BCD /* Daenerys.jpg in Resources */,
+				47B5B983204865FF00901872 /* Tyrellpng.png in Resources */,
+				47B5B984204865FF00901872 /* Baratheon.png in Resources */,
 				472381B8203238A3001944C1 /* lannister.jpg in Resources */,
 				47E536C6203EFAE800CAD929 /* Season_4.jpg in Resources */,
+				47B5B986204865FF00901872 /* Bolton.png in Resources */,
 				47E536C4203EFAE800CAD929 /* Season_3.jpg in Resources */,
+				47B5B98C2048C30700901872 /* prueba.json in Resources */,
 				47546C21203DCFF200433BCD /* Tyrion-Lannister.jpg in Resources */,
 				4706B3C220362BA200EB4206 /* WikiViewController.xib in Resources */,
 				4706B3CA2036452200EB4206 /* HouseListViewController.xib in Resources */,
+				47B5B98A2048A23100901872 /* HOUSES.JSON in Resources */,
+				47B5B987204865FF00901872 /* Greyjoy.png in Resources */,
 				47546C1E203DCFF200433BCD /* Arya.jpg in Resources */,
 				47426DE72040C005001F5CAC /* episodesListVC.xib in Resources */,
 				47E536C2203EFAE800CAD929 /* Season_7.png in Resources */,
 				475802712041840D00ED64CA /* splitVController.xib in Resources */,
 				472381B7203238A3001944C1 /* targaryenSmall.jpg in Resources */,
+				4734BF962044C383005E6C9A /* SeasonDetailVC.xib in Resources */,
 				47E536C3203EFAE800CAD929 /* Season_2.jpg in Resources */,
 				47E536CB203F1DDE00CAD929 /* SeasonListViewController.xib in Resources */,
 			);
@@ -362,7 +411,10 @@
 				47E536CA203F1DDE00CAD929 /* SeasonListViewController.swift in Sources */,
 				4754B8D8202CFE0B005CE93F /* Person.swift in Sources */,
 				47546C14203DCF2700433BCD /* Season.swift in Sources */,
+				4734BF952044C383005E6C9A /* SeasonDetailVC.swift in Sources */,
 				4754B8D4202CF1C2005CE93F /* House.swift in Sources */,
+				4734BF922044BEBA005E6C9A /* Constants.swift in Sources */,
+				47B5B98E2048C34B00901872 /* leeJson.swift in Sources */,
 				47BCCD8420337CA000048C01 /* UIViewController+Additions.swift in Sources */,
 				47546C15203DCF2700433BCD /* Episode.swift in Sources */,
 				475802702041840D00ED64CA /* splitVController.swift in Sources */,

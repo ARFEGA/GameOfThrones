@@ -32,10 +32,11 @@ class PersonTests: XCTestCase {
         starkHouse = House(name:"Stark",sigil:starkSigil,words:"Winter is coming",url: URL(string:"http://awoiaf.westeros.org/index.php/House_Stark")!)
         lannisterHouse = House(name:"Lannister",sigil:lannisterSigil,words:"Oye mi rugido",url: URL(string:"http://awoiaf.westeros.org/index.php/House_Lannister")!)
         
-        tyrion = Person(name:"Tyrion",alias:"El Enano",house:lannisterHouse)
-        arya = Person(name:"Aria",house:starkHouse)
-        roob = Person(name: "Robb", alias: "El Joven Lobo", house: starkHouse)
-        ned = Person(name:"Eddard",alias:"Ned",house:starkHouse)
+        tyrion = Person(name:"Tyrion",alias:"El Enano",house:lannisterHouse, personImage: #imageLiteral(resourceName: "Tyrion-Lannister.jpg"), wikiURL: URL(string: "https://es.wikipedia.org/wiki/Tyrion_Lannister")!)
+        arya = Person(name:"Arya",house:starkHouse, personImage: #imageLiteral(resourceName: "Arya.jpg"),wikiURL: URL(string: "https://es.wikipedia.org/wiki/Arya_Stark")!)
+        roob = Person(name: "Robb", alias: "El Joven Lobo", house: starkHouse, personImage: #imageLiteral(resourceName: "Robb.jpg"),wikiURL: URL(string:"https://es.wikipedia.org/wiki/Robb_Stark")!)
+        
+        
     }
     
     override func tearDown() {
@@ -48,7 +49,7 @@ class PersonTests: XCTestCase {
         XCTAssertNotNil(arya)
     }
     func testFullName(){
-        XCTAssertEqual(ned.fullName,"Eddard Stark")
+        XCTAssertEqual(arya.fullName,"Arya Stark")
         
     }
     
@@ -57,7 +58,7 @@ class PersonTests: XCTestCase {
         //Identidad
         XCTAssertEqual(tyrion, tyrion)
         //Igualdad
-        let enano=Person(name:"Tyrion",alias:"El Enano",house:lannisterHouse)
+        let enano=Person(name:"Tyrion",alias:"El Enano",house:lannisterHouse, personImage: #imageLiteral(resourceName: "Tyrion-Lannister.jpg"), wikiURL: URL(string: "https://es.wikipedia.org/wiki/Tyrion_Lannister")!)
         XCTAssertEqual(enano, tyrion)
         //Desigualdad
         XCTAssertNotEqual(tyrion, arya)

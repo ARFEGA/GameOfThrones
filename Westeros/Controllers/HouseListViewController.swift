@@ -23,7 +23,7 @@ protocol HouseListViewControllerDelegate:AnyObject{
 class HouseListViewController: UITableViewController {
     // MARK - Properties
     let model:[House]
-    weak var delegate:HouseListViewControllerDelegate?  //weak Para que se suelte memoria correctamente
+    var delegate:HouseListViewControllerDelegate?  //weak Para que se suelte memoria correctamente
     
     
     //MARK: - Initialization
@@ -41,18 +41,19 @@ class HouseListViewController: UITableViewController {
     //mark: -Cycle life
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.backgroundColor=UIColor(red:0.20, green:0.20, blue:0.00, alpha:1.0)
         let lastRow=UserDefaults.standard.integer(forKey: LAST_HOUSE)
         let indexPath=IndexPath(row:lastRow,section:0)
-            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
+        tableView.selectRow(at: indexPath, animated: true, scrollPosition:.top)
     }
     
     // MARK: - Table view data source
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    //override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
+    //    return 1
+    //}
+   
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return model.count
@@ -82,20 +83,20 @@ class HouseListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //Que casa han pulsado
         let house=model[indexPath.row]
-        //Crear un controlador de detalle de la casa
-        let houseDetailVC=HouseDetailViewController(model:house)
-        //Hacer un push
-        navigationController?.pushViewController(houseDetailVC, animated: true)
+//        //Crear un controlador de detalle de la casa
+//        let houseDetailVC=HouseDetailViewController(model:house)
+//        //Hacer un push
+//        navigationController?.pushViewController(houseDetailVC, animated: true)
         
-//        //Avisamos al delegado para que ejecute lo que sea
-//        delegate?.funcDelegateHouseListViewController(self, didSelectHouse: house)
-//
-//        //Otra manera distinta al delegado para enviar notifficaciones =>notificaciones
-//        //Pero es más indirecto que un delegate, ya que el delegate asocia los dos elementos asociados
-//        //Mejor siempre con delegate
-//        let notificationCenter=NotificationCenter.default
-//        let notification=Notification(name: Notification.Name(HOUSE_DID_CHANGE_NOTIFICATION_NAME), object: self,userInfo: [HOUSE_KEY:house])
-//        notificationCenter.post(notification)
+        //Avisamos al delegado para que ejecute lo que sea
+        delegate?.funcDelegateHouseListViewController(self, didSelectHouse: house)
+
+        //Otra manera distinta al delegado para enviar notifficaciones =>notificaciones
+        //Pero es más indirecto que un delegate, ya que el delegate asocia los dos elementos asociados
+        //Mejor siempre con delegate
+        let notificationCenter=NotificationCenter.default
+        let notification=Notification(name: Notification.Name(HOUSE_DID_CHANGE_NOTIFICATION_NAME), object: self,userInfo: [HOUSE_KEY:house])
+        notificationCenter.post(notification)
         //Persistencia-> Guardar las coordenadas de la UITableView (section y row seleccionadas)
         saveLastSelectedHouse(at:indexPath.row)
     }

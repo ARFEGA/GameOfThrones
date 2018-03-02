@@ -15,10 +15,12 @@ extension UIViewController{
     }
 }
 
-extension Notification.Name{
-   static let NotificationName=Notification.Name(HOUSE_DID_CHANGE_NOTIFICATION_NAME)
-    
-}
+//extension Notification.Name{
+//    enum Notificaciones:String{
+//        case HOUSE_DID_CHANGE_NOTIFICATION_NAME="houseDidChange"
+//        case SEASON_DID_CHANGE_NOTIFICATION_NAME="SeasonDidChange"
+//    }
+//}
 
 extension String{
     func getDateFromString() -> Date{

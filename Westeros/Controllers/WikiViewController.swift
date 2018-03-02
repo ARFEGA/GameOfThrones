@@ -45,7 +45,7 @@ class WikiViewController: UIViewController {
         super.viewWillAppear(animated)
         //Alta en notificaciones
         let notificationCenter=NotificationCenter.default
-        notificationCenter.addObserver(forName: .NotificationName, object: nil, queue: OperationQueue.main) { (notification) in
+        notificationCenter.addObserver(forName: NSNotification.Name(rawValue: HOUSE_DID_CHANGE_NOTIFICATION_NAME), object: nil, queue: OperationQueue.main) { (notification) in
             // userInfo is the payload send by sender of notification
             if let userInfo = notification.userInfo {
                 //Sacar la casa
@@ -54,6 +54,15 @@ class WikiViewController: UIViewController {
             //Actualizar el modelo
             self.syncModelWithView()
             }
+//        notificationCenter.addObserver(forName: NSNotification.Name(rawValue: SEASON_DID_CHANGE_NOTIFICATION_NAME), object: nil, queue: OperationQueue.main) { (notification) in
+//            // userInfo is the payload send by sender of notification
+//            if let userInfo = notification.userInfo {
+//                //Sacar la casa
+//                self.allmodel = userInfo[SEASON_KEY] as! Season
+//            }
+//            //Actualizar el modelo
+//            self.syncModelWithView()
+//        }
 //        notificationCenter.addObserver(self, selector: #selector(houseDidChange), name: Notification.Name(rawValue: HOUSE_DID_CHANGE_NOTIFICATION_NAME), object: nil)
         
     }
@@ -76,13 +85,20 @@ class WikiViewController: UIViewController {
     }
     //MARK: - Sync
     func syncModelWithView(){
+        let backItem = UIBarButtonItem()
         var url : URL
         if (allmodel is House){
+            backItem.title = allmodel.name
+            self.navigationItem.backBarButtonItem = backItem
             url = (allmodel as! House).wikiURL
-        } else{
+        } else if (allmodel is Person)
+        {
             url = (allmodel as! Person).wikiURL
+        }else{
+            url = (allmodel as! Episode).wikiURL
         }
         webView.load(URLRequest(url:url))
+        
     }
     
 }

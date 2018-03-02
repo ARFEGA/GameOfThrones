@@ -11,11 +11,14 @@ import XCTest
 class RepositoryTests: XCTestCase {
     
     var localHouses:[House]!
+    var localSeasons:[Season]!
     
     
     override func setUp() {
         super.setUp()
         localHouses=Repository.local.houses
+        localSeasons=Repository.local.seasons
+        
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
@@ -51,7 +54,20 @@ class RepositoryTests: XCTestCase {
         XCTAssertEqual(Filter2.count, 1)
     }
     
-    
+    func testSeasonFiltering(){
+        //Sesiones que tengan 2 episodios
+        let filtered=Repository.local.seasons(filteredBy:{$0.count==2})
+        XCTAssertEqual(filtered.count, 7)
+        //Sesiones que contengan Two en su nombre
+        let Filter2=Repository.local.seasons(filteredBy: {$0.name.contains("Two") })
+        XCTAssertEqual(Filter2.count, 1)
+    }
+    func testFuncAutocomplete(){
+        let autocoplete = Repository.local.houseBySlogan(slogan: LocalFactory.Slogan.lanister)
+        XCTAssertNotNil(autocoplete)
+    }
+ 
+ 
     
     
     

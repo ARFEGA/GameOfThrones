@@ -15,23 +15,31 @@ final class Season{
     let name:String
     let emissionDate:Date
     let image:UIImage
+    let plot:String
     private var _episodes:episodes
     
-    init(number:Int,name:String,date:Date,image:UIImage){
+    init(number:Int,name:String,date:Date,image:UIImage,plot:String){
         self.number=number
         self.name=name
         self.emissionDate=date
         self.image=image
+        self.plot=plot
         _episodes=episodes()
     }
 }
 
 extension Season{
+    func add(episode:Episode){
+       _episodes.insert(episode)
+    }
     func add(episodes:Episode...){
         episodes.forEach{_episodes.insert($0)}
     }
     var sortedEpisodes:[Episode]{
         return _episodes.sorted()
+    }
+    var count:Int{
+        return _episodes.count
     }
 }
 

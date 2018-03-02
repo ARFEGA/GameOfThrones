@@ -12,15 +12,20 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate,UISplitViewControllerDelegate {
 
     var window: UIWindow?
-    //var splitVC: splitVController?
     var ViewsState:viewsState?
+    var splitVC:UISplitViewController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        
+        
         //guard let window=window else {
         //    return true
         //}
        
-        let splitVC=UISplitViewController()
+        splitVC=UISplitViewController()
+        let pruebajson = myJson()
+        pruebajson.leeJson()
         
         
        
@@ -28,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         //MARK:- CREATE_DATA
         let arraySeasons=Repository.local.seasons
         let houses=Repository.local.houses
-        let arrayEpisodes=arraySeasons[0].sortedEpisodes
+        //let arrayEpisodes=arraySeasons[0].sortedEpisodes
         
         
         
@@ -36,22 +41,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         let houseListVC=HouseListViewController(model:houses)
         let lastSelectedHouse=houseListVC.lastSelectedHouse()
         let houseDetailVC=HouseDetailViewController(model:lastSelectedHouse)
-         let seasonListVC=SeasonListViewController(model: arraySeasons)
-        let _episodesListVC=episodesListVC(arrayEpisodes: arrayEpisodes)
+        let seasonListVC=SeasonListViewController(model: arraySeasons)
+        let seasonDetailVC=SeasonDetailVC(detailSeason: arraySeasons.first!)
+        //let _episodesListVC=episodesListVC(arrayEpisodes: arrayEpisodes)
        
         
         
         //MARK: - CREATE UITabBarController
         let tabBarVC = UITabBarController()
-        tabBarVC.viewControllers=[seasonListVC.wrappedInNavigation(),houseListVC.wrappedInNavigation()]
+        tabBarVC.viewControllers=[houseListVC.wrappedInNavigation(),seasonListVC.wrappedInNavigation()]
         
         
         
         //MARK: - STRUCT ViewsState
-        let VCs:[UIViewController]=[_episodesListVC,houseDetailVC]
+        let VCs:[UIViewController]=[houseDetailVC,seasonDetailVC]
         ViewsState = viewsState(
             primaryViewSplit: tabBarVC,
-            secondaryViewSplit: _episodesListVC.wrappedInNavigation(),
+            secondaryViewSplit: seasonDetailVC.wrappedInNavigation(),
             auxViewSplit: houseDetailVC.wrappedInNavigation(),
             VCs: VCs ,
             clickedButtonBarTab: 0)
@@ -62,15 +68,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         
         //MARK: - DELEGATES ASIGNED
         houseListVC.delegate=houseDetailVC
-        seasonListVC.delegate=_episodesListVC
+        seasonListVC.delegate=seasonDetailVC
+       
+        
         tabBarVC.delegate = self
-        splitVC.delegate=self
-        splitVC.viewControllers=[tabBarVC]
-        
-        
+        splitVC?.delegate=self
+        splitVC?.viewControllers=[tabBarVC,houseDetailVC.wrappedInNavigation()]
+        splitVC?.preferredDisplayMode = .allVisible
+       
+        //let NCSplitVC = splitVC?.viewControllers[(splitVC?.viewControllers.count)!-1] as! UINavigationController
+        //NCSplitVC.navigationItem.leftBarButtonItem=splitVC?.displayModeButtonItem
+        //splitVC?.navigationController?.navigationItem.leftBarButtonItem=splitVC?.displayModeButtonItem
         window=UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        window?.rootViewController = tabBarVC
+        window?.rootViewController = splitVC
         return true
         //let navigationController = splitVC!.viewControllers[splitVC!.viewControllers.count-1] as! UINavigationController
         //navigationController.topViewController!.navigationItem.leftBarButtonItem = splitVC!.displayModeButtonItem()
@@ -94,19 +105,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         
     }
     
+    func targetDisplayModeForAction(in svc: UISplitViewController) -> UISplitViewControllerDisplayMode {
+        return (splitVC?.displayMode)!
+    }
     
+//    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+//        return false
+//    }
   
     func splitViewController(_ splitViewController: UISplitViewController, separateSecondaryFrom primaryViewController: UIViewController) -> UIViewController? {
 
         let index=(ViewsState?.clickedButtonBarTab)!
-
+        //splitVC?.preferredDisplayMode = .allVisible
         return ViewsState?.VCs[index].wrappedInNavigation()
     }
 
     func primaryViewController(forCollapsing splitViewController: UISplitViewController) -> UIViewController? {
+        //splitVC?.preferredDisplayMode = .primaryHidden
         return ViewsState?.primaryViewSplit
     }
     func primaryViewController(forExpanding splitViewController: UISplitViewController) -> UIViewController? {
+        splitVC?.preferredDisplayMode = .allVisible
         return ViewsState?.primaryViewSplit
     }
    
@@ -115,14 +134,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         switch UIApplication.shared.statusBarOrientation {
         //En estado PORTRAIT
         case .portrait,.portraitUpsideDown:
+            //splitVC?.preferredDisplayMode = .primaryHidden
             break
          //En estado LANDSCAPE
         case .landscapeLeft,.landscapeRight:
-            //splitVC?.showDetailViewController( (ViewsState?.VCs[tabBarController.selectedIndex].wrappedInNavigation())!, sender:self)
+            //splitVC?.preferredDisplayMode = .allVisible
             break
         case .unknown:
             break
         }
+        splitVC?.showDetailViewController( (ViewsState?.VCs[tabBarController.selectedIndex].wrappedInNavigation())!, sender:self)
        
         
     }

@@ -1,13 +1,16 @@
 
 
 import UIKit
-
+let SEASON_DID_CHANGE_NOTIFICATION_NAME = "SeasonDidChange"
+let SEASON_KEY="SeasonKey"
 protocol SeasonListVCDelegate:AnyObject{
-    func funcDelegateSeasonListVCDelegate(_ VC:SeasonListViewController,didSelectedRow:[Episode])
+    func funcDelegateSeasonListVCDelegate(_ VC:SeasonListViewController,didSelectedRow:Season)
 }
 
 
 final class SeasonListViewController: UIViewController {
+    let appdelegate = UIApplication.shared.delegate as! AppDelegate
+    
     @IBOutlet weak var tableView: UITableView!
     let seasonModel:[Season]
     weak var delegate:SeasonListVCDelegate?
@@ -24,8 +27,10 @@ final class SeasonListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.dataSource=self
         tableView.delegate=self
+        
     }
 }
 
@@ -53,7 +58,27 @@ extension SeasonListViewController: UITableViewDataSource{
 extension SeasonListViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let season = seasonModel[indexPath.row]
-        delegate?.funcDelegateSeasonListVCDelegate(self, didSelectedRow : season.sortedEpisodes)
+        appdelegate.splitVC?.showDetailViewController(((appdelegate.ViewsState?.VCs[(appdelegate.ViewsState?.clickedButtonBarTab)!])?.wrappedInNavigation())!, sender: self)
+        delegate?.funcDelegateSeasonListVCDelegate(self, didSelectedRow : season)
+        //Otra manera distinta al delegado para enviar notifficaciones =>notificaciones
+        //Pero es más indirecto que un delegate, ya que el delegate asocia los dos elementos asociados
+        //Mejor siempre con delegate
+        let notificationCenter=NotificationCenter.default
+        let notification=Notification(name: Notification.Name(rawValue: SEASON_DID_CHANGE_NOTIFICATION_NAME), object: self,userInfo: [SEASON_KEY:season])
+        notificationCenter.post(notification)
+        switch UIApplication.shared.statusBarOrientation {
+        //En estado PORTRAIT
+        case .portrait,.portraitUpsideDown:
+            appdelegate.splitVC?.preferredDisplayMode = .primaryHidden
+            break
+        //En estado LANDSCAPE
+        case .landscapeLeft,.landscapeRight:
+            appdelegate.splitVC?.preferredDisplayMode = .allVisible
+            break
+        case .unknown:
+            break
+        }
+        
     }
 }
 

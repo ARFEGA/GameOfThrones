@@ -28,10 +28,9 @@ class HouseTests: XCTestCase {
     
         starkHouse = House(name:"Stark",sigil:starkSigil,words:"Winter is coming",url: URL(string:"http://awoiaf.westeros.org/index.php/House_Stark")!)
         lannisterHouse = House(name:"Lannister",sigil:lannisterSigil,words:"Oye mi rugido",url: URL(string:"http://awoiaf.westeros.org/index.php/House_Lannister")!)
-        
-        tyrion = Person(name:"Tyrion",alias:"El Enano",house:lannisterHouse)
-        arya = Person(name:"Aria",house:starkHouse)
-        roob = Person(name: "Robb", alias: "El Joven Lobo", house: starkHouse)
+        tyrion = Person(name:"Tyrion",alias:"El Enano",house:lannisterHouse, personImage: #imageLiteral(resourceName: "Tyrion-Lannister.jpg"), wikiURL: URL(string: "https://es.wikipedia.org/wiki/Tyrion_Lannister")!)
+        arya = Person(name:"Aria",house:starkHouse, personImage: #imageLiteral(resourceName: "Arya.jpg"),wikiURL: URL(string: "https://es.wikipedia.org/wiki/Arya_Stark")!)
+        roob = Person(name: "Robb", alias: "El Joven Lobo", house: starkHouse, personImage: #imageLiteral(resourceName: "Robb.jpg"),wikiURL: URL(string:"https://es.wikipedia.org/wiki/Robb_Stark")!)
     
         super.setUp()
     }
@@ -51,13 +50,13 @@ class HouseTests: XCTestCase {
         XCTAssertNotNil(lannisterSigil)
     }
     func testAddPerson(){
-        XCTAssertEqual(starkHouse.count, 0)
+        XCTAssertEqual(starkHouse.count, 2)
         
         starkHouse.add(person:roob)
-        XCTAssertEqual(starkHouse.count, 1)
+        XCTAssertEqual(starkHouse.count, 2)
         
         starkHouse.add(person:roob)
-        XCTAssertEqual(starkHouse.count, 1)
+        XCTAssertEqual(starkHouse.count, 2)
         
         starkHouse.add(person:arya)
         XCTAssertEqual(starkHouse.count, 2)
@@ -66,12 +65,12 @@ class HouseTests: XCTestCase {
         XCTAssertEqual(starkHouse.count, 2)
         
         lannisterHouse.add(person: roob)
-        XCTAssertEqual(lannisterHouse.count, 0)
-        let cersei = Person(name: "Cersei", alias:"La reina",house: lannisterHouse)
-        let jaime = Person(name: "Jaime", alias: "Mata reyes", house:lannisterHouse)
+        XCTAssertEqual(lannisterHouse.count, 1)
+        let cersei = Person(name: "Cersei", house: lannisterHouse, personImage: #imageLiteral(resourceName: "Cersei.jpg"),wikiURL:URL(string:"https://es.wikipedia.org/wiki/Cersei_Lannister")!)
+        let jaime = Person(name: "Jaime", alias: "Mata reyes", house:lannisterHouse, personImage: #imageLiteral(resourceName: "Jaime.jpg"),wikiURL: URL(string:"https://es.wikipedia.org/wiki/Jaime_Lannister")!)
         
         lannisterHouse.add(persons: cersei,jaime,jaime)
-        XCTAssertEqual(lannisterHouse.count,2)
+        XCTAssertEqual(lannisterHouse.count,3)
         
         
     }
