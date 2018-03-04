@@ -18,7 +18,7 @@ typealias Words = String
 
 final class House {
     let name:String
-    var sigil:Sigil
+    weak var sigil:Sigil?
     let words:String
     let wikiURL:URL
     
