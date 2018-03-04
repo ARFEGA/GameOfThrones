@@ -36,12 +36,20 @@ enum Month:Int{
 
 extension Date{
     func buildShortDateFromArguments(day:Int,month:Month,year:Int) -> Date{
+        
         var firstDateComponents = DateComponents()
         firstDateComponents.day = day
         firstDateComponents.month = month.rawValue
         firstDateComponents.year = year
         firstDateComponents.timeZone = TimeZone(abbreviation: "UTC")
-        return  Calendar(identifier: Calendar.Identifier.gregorian).date(from: firstDateComponents)!
+        return   Calendar(identifier: Calendar.Identifier.gregorian).date(from: firstDateComponents)!
+    }
+    func dateToString() ->String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale(identifier: "es_ES")
+        return dateFormatter.string(from: self)
     }
     
 }

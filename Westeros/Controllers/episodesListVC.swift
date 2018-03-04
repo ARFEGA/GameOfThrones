@@ -81,7 +81,7 @@ final class episodesListVC: UIViewController {
             let idCell="re-use"
             let currentEpisode=episodesSeason[indexPath.row]
             let cell=tableView.dequeueReusableCell(withIdentifier: idCell) ?? UITableViewCell(style: .default, reuseIdentifier: idCell)
-            cell.textLabel?.text =  "(\(currentEpisode.number)) \(currentEpisode.title)"
+            cell.textLabel?.text =  "(\(currentEpisode.number)) \(currentEpisode.title)  (\(currentEpisode.emissionDate.dateToString()))"
             cell.detailTextLabel?.text=String(describing: currentEpisode.emissionDate)
             //cell.imageView?.image=currentEpisode.
             return cell
