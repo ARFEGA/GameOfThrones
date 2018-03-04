@@ -41,7 +41,6 @@
 		47B5B986204865FF00901872 /* Bolton.png in Resources */ = {isa = PBXBuildFile; fileRef = 47B5B981204865FF00901872 /* Bolton.png */; };
 		47B5B987204865FF00901872 /* Greyjoy.png in Resources */ = {isa = PBXBuildFile; fileRef = 47B5B982204865FF00901872 /* Greyjoy.png */; };
 		47B5B98A2048A23100901872 /* HOUSES.JSON in Resources */ = {isa = PBXBuildFile; fileRef = 47B5B9892048A23100901872 /* HOUSES.JSON */; };
-		47B5B98C2048C30700901872 /* prueba.json in Resources */ = {isa = PBXBuildFile; fileRef = 47B5B98B2048C30700901872 /* prueba.json */; };
 		47B5B9902049CC1C00901872 /* house.json in Resources */ = {isa = PBXBuildFile; fileRef = 47B5B98F2049CC1C00901872 /* house.json */; };
 		47B5B995204C94BB00901872 /* Theon_Greyjoy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 47B5B993204C94BB00901872 /* Theon_Greyjoy.jpg */; };
 		47B5B996204C94BB00901872 /* Jorah_Mormon.png in Resources */ = {isa = PBXBuildFile; fileRef = 47B5B994204C94BB00901872 /* Jorah_Mormon.png */; };
@@ -114,7 +113,6 @@
 		47B5B981204865FF00901872 /* Bolton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bolton.png; sourceTree = "<group>"; };
 		47B5B982204865FF00901872 /* Greyjoy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Greyjoy.png; sourceTree = "<group>"; };
 		47B5B9892048A23100901872 /* HOUSES.JSON */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HOUSES.JSON; sourceTree = "<group>"; };
-		47B5B98B2048C30700901872 /* prueba.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = prueba.json; sourceTree = "<group>"; };
 		47B5B98F2049CC1C00901872 /* house.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = house.json; sourceTree = "<group>"; };
 		47B5B993204C94BB00901872 /* Theon_Greyjoy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Theon_Greyjoy.jpg; sourceTree = "<group>"; };
 		47B5B994204C94BB00901872 /* Jorah_Mormon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Jorah_Mormon.png; sourceTree = "<group>"; };
@@ -270,7 +268,6 @@
 		47B5B9882048A1BC00901872 /* DataJSON */ = {
 			isa = PBXGroup;
 			children = (
-				47B5B98B2048C30700901872 /* prueba.json */,
 				47B5B9892048A23100901872 /* HOUSES.JSON */,
 				47B5B98F2049CC1C00901872 /* house.json */,
 			);
@@ -400,7 +397,6 @@
 				47B5B986204865FF00901872 /* Bolton.png in Resources */,
 				47B5B9902049CC1C00901872 /* house.json in Resources */,
 				47E536C4203EFAE800CAD929 /* Season_3.jpg in Resources */,
-				47B5B98C2048C30700901872 /* prueba.json in Resources */,
 				47546C21203DCFF200433BCD /* Tyrion.jpg in Resources */,
 				4706B3C220362BA200EB4206 /* WikiViewController.xib in Resources */,
 				47B5B99A204C96D800901872 /* Robert_Baratheon.jpg in Resources */,
