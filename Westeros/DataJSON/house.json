@@ -1,0 +1,28 @@
+
+    [
+     {
+        "name": "Starks",
+        "wikiURL":"House_Stark",
+        "words":"Winter is coming",
+        "sigil1":"Stark.png",
+        "sigil2":
+                {
+                 "description":"Arya",
+                 "image":"Mujer"
+                }
+    },
+    {
+        "name": "Tully",
+        "wikiURL":"House_Stark",
+        "words":"Winter is coming",
+        "sigil1":"Stark.png",
+         "sigil2":
+                {
+                    "description":"Arya",
+                    "image":"Mujer"
+                }
+    }
+    ]
+              
+
+

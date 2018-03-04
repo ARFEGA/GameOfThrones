@@ -50,7 +50,7 @@ class HouseDetailViewController: UIViewController {
     func syncModelWithView() {
         // Model -> View
         houseNameLabel.text = "House \(model.name)"
-        sigilImageView.image = model.sigil.image
+        sigilImageView.image = UIImage(named:model.sigil.image)
         wordsLabel.text = model.words
         title=model.name
         
@@ -84,6 +84,8 @@ extension HouseDetailViewController:HouseListViewControllerDelegate{
     func funcDelegateHouseListViewController(_ vc: HouseListViewController, didSelectHouse house: House) {
         self.model=house
         syncModelWithView()
+        
+        //Sin funcionalidad, las mil y una pruebas para conseguir que funcionase en portrait
         switch UIApplication.shared.statusBarOrientation {
             //En estado PORTRAIT
             case .portrait,.portraitUpsideDown:

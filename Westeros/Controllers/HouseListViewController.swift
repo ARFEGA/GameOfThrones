@@ -23,7 +23,7 @@ protocol HouseListViewControllerDelegate:AnyObject{
 class HouseListViewController: UITableViewController {
     // MARK - Properties
     let model:[House]
-    var delegate:HouseListViewControllerDelegate?  //weak Para que se suelte memoria correctamente
+    weak var delegate:HouseListViewControllerDelegate?  //weak Para que se suelte memoria correctamente
     
     
     //MARK: - Initialization
@@ -48,11 +48,6 @@ class HouseListViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    
-    //override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-    //    return 1
-    //}
    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -72,7 +67,7 @@ class HouseListViewController: UITableViewController {
             cell=UITableViewCell(style: .default, reuseIdentifier: cellId)
         }
         //Sincronizar modelo (house) con la celda (vista)
-        cell?.imageView?.image=houseActual.sigil.image
+        cell?.imageView?.image = UIImage(named: houseActual.sigil.image)
         cell?.textLabel?.text=houseActual.name
         
         return cell!
@@ -83,12 +78,6 @@ class HouseListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //Que casa han pulsado
         let house=model[indexPath.row]
-//        //Crear un controlador de detalle de la casa
-//        let houseDetailVC=HouseDetailViewController(model:house)
-//        //Hacer un push
-//        navigationController?.pushViewController(houseDetailVC, animated: true)
-        
-        //Avisamos al delegado para que ejecute lo que sea
         delegate?.funcDelegateHouseListViewController(self, didSelectHouse: house)
 
         //Otra manera distinta al delegado para enviar notifficaciones =>notificaciones

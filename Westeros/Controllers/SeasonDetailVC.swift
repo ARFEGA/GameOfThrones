@@ -41,7 +41,6 @@ final class SeasonDetailVC: UIViewController {
         self.titleSeason.text = detailSeasonModel.name
         self.imageSeason.image=detailSeasonModel.image
         self.plotSeason.text=detailSeasonModel.plot
-        //title=detailSeasonModel.name
     }
     
     func setUp(){

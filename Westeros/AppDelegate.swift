@@ -16,25 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
     var splitVC:UISplitViewController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-        
-        
-        //guard let window=window else {
-        //    return true
-        //}
-       
+        //MARK: - CREATE split
         splitVC=UISplitViewController()
-        let pruebajson = myJson()
-        pruebajson.leeJson()
-        
-        
-       
         
         //MARK:- CREATE_DATA
         let arraySeasons=Repository.local.seasons
         let houses=Repository.local.houses
-        //let arrayEpisodes=arraySeasons[0].sortedEpisodes
-        
         
         
         //MARK: - CREATE_VC
@@ -43,9 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         let houseDetailVC=HouseDetailViewController(model:lastSelectedHouse)
         let seasonListVC=SeasonListViewController(model: arraySeasons)
         let seasonDetailVC=SeasonDetailVC(detailSeason: arraySeasons.first!)
-        //let _episodesListVC=episodesListVC(arrayEpisodes: arrayEpisodes)
-       
-        
         
         //MARK: - CREATE UITabBarController
         let tabBarVC = UITabBarController()
@@ -61,57 +45,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
             auxViewSplit: houseDetailVC.wrappedInNavigation(),
             VCs: VCs ,
             clickedButtonBarTab: 0)
-       
-        //MARK: - CREATE split
-        
-        //splitVC=splitVController(primaryVC: ViewsState?.primaryViewSplit, secondaryVC:ViewsState?.secondaryViewSplit)
         
         //MARK: - DELEGATES ASIGNED
         houseListVC.delegate=houseDetailVC
         seasonListVC.delegate=seasonDetailVC
-       
-        
         tabBarVC.delegate = self
         splitVC?.delegate=self
-        splitVC?.viewControllers=[tabBarVC,houseDetailVC.wrappedInNavigation()]
+    splitVC?.viewControllers=[tabBarVC,houseDetailVC.wrappedInNavigation(),seasonDetailVC.wrappedInNavigation()]
         splitVC?.preferredDisplayMode = .allVisible
        
-        //let NCSplitVC = splitVC?.viewControllers[(splitVC?.viewControllers.count)!-1] as! UINavigationController
-        //NCSplitVC.navigationItem.leftBarButtonItem=splitVC?.displayModeButtonItem
-        //splitVC?.navigationController?.navigationItem.leftBarButtonItem=splitVC?.displayModeButtonItem
+     
         window=UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.rootViewController = splitVC
         return true
-        //let navigationController = splitVC!.viewControllers[splitVC!.viewControllers.count-1] as! UINavigationController
-        //navigationController.topViewController!.navigationItem.leftBarButtonItem = splitVC!.displayModeButtonItem()
-        //tabBarViewController.viewControllers    = [starkHouseVC.wrappedInNavigation(),lannisterHouseVC.wrappedInNavigation()
-        //        let tabBarViewController=UITabBarController()
-        //        tabBarViewController.viewControllers =
-        //            houses
-        //            .map{ HouseDetailViewController(model:$0) }
-        //            .map{ $0.wrappedInNavigation() }
-        
-        // Crea los controladores
-        //let controllers=houses.map{house in
-        //    return HouseDetailViewController(model:house).wrappedInNavigation()
-        //}
-        //var controllers=[UIViewController]()
-        //for house in houses{
-        //    controllers.append(HouseDetailViewController(model:house).wrappedInNavigation())
-        //}
-       
-        
-        
     }
     
-    func targetDisplayModeForAction(in svc: UISplitViewController) -> UISplitViewControllerDisplayMode {
-        return (splitVC?.displayMode)!
-    }
+   
     
 //    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
 //        return false
 //    }
+    func targetDisplayModeForAction(in svc: UISplitViewController) -> UISplitViewControllerDisplayMode {
+        return (splitVC?.displayMode)!
+    }
   
     func splitViewController(_ splitViewController: UISplitViewController, separateSecondaryFrom primaryViewController: UIViewController) -> UIViewController? {
 
@@ -131,8 +88,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
    
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         ViewsState?.clickedButtonBarTab = tabBarController.selectedIndex
+    splitVC?.showDetailViewController( (ViewsState?.VCs[tabBarController.selectedIndex].wrappedInNavigation())!, sender:self)
         switch UIApplication.shared.statusBarOrientation {
         //En estado PORTRAIT
+        //Sin funcionalidad
+        //Pruebas para tratar de trabajar en portrait, sin exito.
         case .portrait,.portraitUpsideDown:
             //splitVC?.preferredDisplayMode = .primaryHidden
             break
@@ -143,9 +103,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         case .unknown:
             break
         }
-        splitVC?.showDetailViewController( (ViewsState?.VCs[tabBarController.selectedIndex].wrappedInNavigation())!, sender:self)
-       
-        
     }
 
 

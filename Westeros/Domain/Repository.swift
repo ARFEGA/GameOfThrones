@@ -11,6 +11,7 @@ import UIKit
 
 final class Repository{
     static let local=LocalFactory()
+   
     //static let remote
     //init(
 }
@@ -27,6 +28,8 @@ protocol GameThronesFactory{
    
 }
 
+    
+
 final class LocalFactory : GameThronesFactory{
     var seasons: [Season]{
         //MARK: - Seasons
@@ -42,31 +45,33 @@ final class LocalFactory : GameThronesFactory{
         
         //MARK: - Episodes
         _=Episode(title: "Winter is comming", emissionDate:Date().buildShortDateFromArguments(day: 17, month: Month.April, year: 2011), season: season1, number: 1, wikiURL:URL(string:"https://es.wikipedia.org/wiki/Se_acerca_el_invierno")!)
-        _=Episode(title: "The Kingsroad", emissionDate:Date().buildShortDateFromArguments(day: 24, month: Month.April, year: 2011), season: season1, number: 2, wikiURL:URL(string:"https://es.wikipedia.org/wiki/Se_acerca_el_invierno")!)
+        _=Episode(title: "The Kingsroad", emissionDate:Date().buildShortDateFromArguments(day: 24, month: Month.April, year: 2011), season: season1, number: 2, wikiURL:URL(string:"https://es.wikipedia.org/wiki/El_Camino_Real")!)
         
-        _=Episode(title: "The North Remembers", emissionDate:Date().buildShortDateFromArguments(day: 1, month: Month.April, year: 2012), season: season2, number: 1, wikiURL:URL(string:"https://es.wikipedia.org/wiki/Se_acerca_el_invierno")!)
-        _=Episode(title: "The Night Lands", emissionDate:Date().buildShortDateFromArguments(day: 8, month: Month.April, year: 2012), season: season2, number: 2, wikiURL:URL(string:"https://es.wikipedia.org/wiki/Se_acerca_el_invierno")!)
+        _=Episode(title: "The North Remembers", emissionDate:Date().buildShortDateFromArguments(day: 1, month: Month.April, year: 2012), season: season2, number: 1, wikiURL:URL(string:"https://es.wikipedia.org/wiki/El_Norte_no_olvida")!)
+        _=Episode(title: "The Night Lands", emissionDate:Date().buildShortDateFromArguments(day: 8, month: Month.April, year: 2012), season: season2, number: 2, wikiURL:URL(string:"https://es.wikipedia.org/wiki/Las_tierras_de_la_noche")!)
         
-        _=Episode(title: "Valar Dohaeris", emissionDate:Date().buildShortDateFromArguments(day: 31, month: Month.March, year: 2013), season: season3, number: 1, wikiURL:URL(string:"https://es.wikipedia.org/wiki/Se_acerca_el_invierno")!)
-        _=Episode(title: "Dark Wings, Dark Words", emissionDate:Date().buildShortDateFromArguments(day: 7, month: Month.April, year: 2013), season: season3, number: 2, wikiURL:URL(string:"https://es.wikipedia.org/wiki/Se_acerca_el_invierno")!)
+        _=Episode(title: "Valar Dohaeris", emissionDate:Date().buildShortDateFromArguments(day: 31, month: Month.March, year: 2013), season: season3, number: 1, wikiURL:URL(string:"https://es.wikipedia.org/wiki/Valar_Dohaeris")!)
+        _=Episode(title: "Dark Wings, Dark Words", emissionDate:Date().buildShortDateFromArguments(day: 7, month: Month.April, year: 2013), season: season3, number: 2, wikiURL:URL(string:"https://es.wikipedia.org/wiki/Alas_negras,_palabras_negras")!)
         
-        _=Episode(title: "Two Swords", emissionDate:Date().buildShortDateFromArguments(day: 6, month: Month.April, year: 2014), season: season4, number: 1, wikiURL:URL(string:"https://es.wikipedia.org/wiki/Se_acerca_el_invierno")!)
-        _=Episode(title: "The Lion and the Rose", emissionDate:Date().buildShortDateFromArguments(day: 13, month: Month.April, year: 2014), season: season4, number: 2, wikiURL:URL(string:"https://es.wikipedia.org/wiki/Se_acerca_el_invierno")!)
+        _=Episode(title: "Two Swords", emissionDate:Date().buildShortDateFromArguments(day: 6, month: Month.April, year: 2014), season: season4, number: 1, wikiURL:URL(string:"https://es.wikipedia.org/wiki/Dos_espadas_(Juego_de_tronos)")!)
+        _=Episode(title: "The Lion and the Rose", emissionDate:Date().buildShortDateFromArguments(day: 13, month: Month.April, year: 2014), season: season4, number: 2, wikiURL:URL(string:"https://es.wikipedia.org/wiki/El_le%C3%B3n_y_la_rosa")!)
         
-        _=Episode(title: "The Wars to Come", emissionDate:Date().buildShortDateFromArguments(day: 12, month: Month.April, year: 2015), season: season5, number: 1, wikiURL:URL(string:"https://es.wikipedia.org/wiki/Se_acerca_el_invierno")!)
-        _=Episode(title: "The House of Black and White", emissionDate:Date().buildShortDateFromArguments(day: 19, month: Month.April, year: 2015), season: season5, number: 2, wikiURL:URL(string:"https://es.wikipedia.org/wiki/Se_acerca_el_invierno")!)
+        _=Episode(title: "The Wars to Come", emissionDate:Date().buildShortDateFromArguments(day: 12, month: Month.April, year: 2015), season: season5, number: 1, wikiURL:URL(string:"https://es.wikipedia.org/wiki/Las_guerras_venideras")!)
+        _=Episode(title: "The House of Black and White", emissionDate:Date().buildShortDateFromArguments(day: 19, month: Month.April, year: 2015), season: season5, number: 2, wikiURL:URL(string:"https://es.wikipedia.org/wiki/La_Casa_de_Negro_y_Blanco")!)
         
-        _=Episode(title: "The Red Woman", emissionDate:Date().buildShortDateFromArguments(day: 24, month: Month.April, year: 2016), season: season6, number: 1, wikiURL:URL(string:"https://es.wikipedia.org/wiki/Se_acerca_el_invierno")!)
-        _=Episode(title: "Home", emissionDate:Date().buildShortDateFromArguments(day: 1, month: Month.May, year: 2016), season: season6, number: 2, wikiURL:URL(string:"https://es.wikipedia.org/wiki/Se_acerca_el_invierno")!)
+        _=Episode(title: "The Red Woman", emissionDate:Date().buildShortDateFromArguments(day: 24, month: Month.April, year: 2016), season: season6, number: 1, wikiURL:URL(string:"https://es.wikipedia.org/wiki/La_mujer_roja")!)
+        _=Episode(title: "Home", emissionDate:Date().buildShortDateFromArguments(day: 1, month: Month.May, year: 2016), season: season6, number: 2, wikiURL:URL(string:"https://es.wikipedia.org/wiki/A_casa")!)
         
-        _=Episode(title: "Dragonstone", emissionDate:Date().buildShortDateFromArguments(day: 16, month: Month.July, year: 2017), season: season7, number: 1, wikiURL:URL(string:"https://es.wikipedia.org/wiki/Se_acerca_el_invierno")!)
-        _=Episode(title: "Stormborn", emissionDate:Date().buildShortDateFromArguments(day: 23, month: Month.July, year: 2017), season: season7, number: 2, wikiURL:URL(string:"https://es.wikipedia.org/wiki/Se_acerca_el_invierno")!)
+        _=Episode(title: "Dragonstone", emissionDate:Date().buildShortDateFromArguments(day: 16, month: Month.July, year: 2017), season: season7, number: 1, wikiURL:URL(string:"https://es.wikipedia.org/wiki/Game_of_Thrones_(temporada_7)#Episodios")!)
+        _=Episode(title: "Stormborn", emissionDate:Date().buildShortDateFromArguments(day: 23, month: Month.July, year: 2017), season: season7, number: 2, wikiURL:URL(string:"https://es.wikipedia.org/wiki/Game_of_Thrones_(temporada_7)#Episodios")!)
        
         
         return [season1,season2,season3,season4,season5,season6,season7].sorted()
             
         
     }
+    
+    //MARK: - ENUM PARA DAR SOLUCIÓN AL PUNTO 8
     enum Slogan:String{
         
         case WinterIsComing="Winter is coming"
@@ -74,20 +79,19 @@ final class LocalFactory : GameThronesFactory{
         case FireandBlood="Fire and Blood"
     }
     
-    //Al solo tener una propiedad computada no es necesário init
-    //init(houses:[])
+ 
     var houses: [House]{
-        //House creation here
+
         
         //SIGIL
-        let starkSigil=Sigil(image: #imageLiteral(resourceName: "codeIsComing.png") , description: "Lobo Huargo")
-        let lannisterSigil=Sigil(image:#imageLiteral(resourceName: "lannister.jpg") , description: "Leon Rampante")
-        let targaryenSigil=Sigil(image: #imageLiteral(resourceName: "targaryenSmall.jpg"), description: "Dragón tricefalo")
-        let mormontSigil=Sigil(image: #imageLiteral(resourceName: "Mormon.PNG") , description: "A black bear in a green wood")
-        let tyrellSigil=Sigil(image:#imageLiteral(resourceName: "Tyrellpng.png") , description: "A golden rose, on a green field")
-        let boltonSigil=Sigil(image: #imageLiteral(resourceName: "Bolton.png"), description: "A red flayed man on pink strewn")
-        let baratheonSigil=Sigil(image: #imageLiteral(resourceName: "Baratheon.png") , description: "A black crowned stag, on a gold field")
-        let greyhjoySigil=Sigil(image:#imageLiteral(resourceName: "Greyjoy.png") , description: "Sable, a kraken Or")
+        let starkSigil=Sigil(image: "Stark.png", description: "Lobo Huargo")
+        let lannisterSigil=Sigil(image:"lannister.jpg", description: "Leon Rampante")
+        let targaryenSigil=Sigil(image: "targaryenSmall.jpg", description: "Dragón tricefalo")
+        let mormontSigil=Sigil(image: "Mormont.png" , description: "A black bear in a green wood")
+        let tyrellSigil=Sigil(image:"Tyrell.png", description: "A golden rose, on a green field")
+        let boltonSigil=Sigil(image: "Bolton.png", description: "A red flayed man on pink strewn")
+        let baratheonSigil=Sigil(image: "Baratheon.png" , description: "A black crowned stag, on a gold field")
+        let greyhjoySigil=Sigil(image:"Greyjoy.png" , description: "Sable, a kraken Or")
  
         //HOUSES
         let starkHouse = House(name:"Stark",sigil:starkSigil,words:"Winter is coming", url: URL(string:"https://awoiaf.westeros.org/index.php/House_Stark")!)
@@ -100,17 +104,25 @@ final class LocalFactory : GameThronesFactory{
         let greyjoyHouse = House(name: "Greyjoy", sigil: greyhjoySigil, words: "We Do Not Sow", url: URL(string:"https://awoiaf.westeros.org/index.php/House_Greyjoy")!)
         
         //PERSONS
-        _ = Person(name:"Tyrion",alias:"El Enano",house:lannisterHouse, personImage: #imageLiteral(resourceName: "Tyrion-Lannister.jpg"), wikiURL: URL(string: "https://es.wikipedia.org/wiki/Tyrion_Lannister")!)
-        _ = Person(name:"Aria",house:starkHouse, personImage: #imageLiteral(resourceName: "Arya.jpg"),wikiURL: URL(string: "https://es.wikipedia.org/wiki/Arya_Stark")!)
-        _ = Person(name: "Robb", alias: "El Joven Lobo", house: starkHouse, personImage: #imageLiteral(resourceName: "Robb.jpg"),wikiURL: URL(string:"https://es.wikipedia.org/wiki/Robb_Stark")!)
-        _ = Person(name: "Cersei", house: lannisterHouse, personImage: #imageLiteral(resourceName: "Cersei.jpg"),wikiURL:URL(string:"https://es.wikipedia.org/wiki/Cersei_Lannister")!)
-        _ = Person(name: "Jaime", alias: "Mata reyes", house:lannisterHouse, personImage: #imageLiteral(resourceName: "Jaime.jpg"),wikiURL: URL(string:"https://es.wikipedia.org/wiki/Jaime_Lannister")!)
-        _ = Person(name: "Daenerys", alias: "Madre de dragones", house: targaryenHouse, personImage: #imageLiteral(resourceName: "Daenerys.jpg"),wikiURL: URL(string:"https://es.wikipedia.org/wiki/Daenerys_Targaryen")!)
+        _ = Person(name:"Tyrion",alias:"El Enano",house:lannisterHouse, personImage: "Tyrion.jpg", wikiURL:"https://es.wikipedia.org/wiki/Tyrion_Lannister")
+        _ = Person(name:"Aria",house:starkHouse, personImage:"Arya.jpg" ,wikiURL: "https://es.wikipedia.org/wiki/Arya_Stark")
+        _ = Person(name: "Robb", alias: "El Joven Lobo", house: starkHouse, personImage: "Robb.jpg",wikiURL: "https://es.wikipedia.org/wiki/Robb_Stark")
+        _ = Person(name: "Cersei", house: lannisterHouse, personImage: "Cersei.jpg",wikiURL:"https://es.wikipedia.org/wiki/Cersei_Lannister")
+        _ = Person(name: "Jaime", alias: "Mata reyes", house:lannisterHouse, personImage:"Jaime.jpg",wikiURL:"https://es.wikipedia.org/wiki/Jaime_Lannister")
+        _ = Person(name: "Daenerys", alias: "Madre de dragones", house: targaryenHouse, personImage: "Daenerys.jpg",wikiURL: "https://es.wikipedia.org/wiki/Daenerys_Targaryen")
+        _ = Person(name: "Theon", house: greyjoyHouse, personImage: "Theon_Greyjoy.jpg",wikiURL: "https://en.wikipedia.org/wiki/Theon_Greyjoy")
+        _ = Person(name: "Ramsay", alias:"The Bastard of Bolton",house: boltonHouse, personImage: "Ramsay_Bolton.jpg",wikiURL: "https://en.wikipedia.org/wiki/Ramsay_Bolton")
+        _ = Person(name: "Jorah", alias:"Jorah the Andal",house: mormontHouse, personImage: "Jorah_Mormon.png",wikiURL: "https://en.wikipedia.org/wiki/Jorah_Mormont")
+        _ = Person(name: "Robert", alias:"The usurper",house: baratheonHouse, personImage: "Robert_Baratheon.jpg",wikiURL: "https://en.wikipedia.org/wiki/Robert_Baratheon")
+        _ = Person(name: "Robert", alias:"The usurper",house: baratheonHouse, personImage: "Robert_Baratheon.jpg",wikiURL: "https://en.wikipedia.org/wiki/Robert_Baratheon")
+         _ = Person(name: "Margaery", alias:"The Little Rose",house: tyrellHouse, personImage: "Margery_Tyrell.jpg",wikiURL: "https://en.wikipedia.org/wiki/Margaery_Tyrell")
+        
         
         return [targaryenHouse, starkHouse,lannisterHouse,mormontHouse,tyrellHouse,boltonHouse,baratheonHouse,greyjoyHouse].sorted()
     }
     
     //MARK: PUNTO 8. Esta función, su implementación y llamada se efectua a traves de un snippet. La llamada está implementada en RepositoryTest
+
     func houseBySlogan(slogan:Slogan) -> House{
         let house=houses.filter{ $0.words.uppercased() == slogan.rawValue.uppercased()}.first
         return house!

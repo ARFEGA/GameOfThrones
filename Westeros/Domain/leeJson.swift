@@ -9,24 +9,24 @@
 import Foundation
 
 
-struct HousesJson : Decodable {
-    let houses:[HouseJson]
-}
-
-
-struct HouseJson: Decodable{
-    let name:String
-    let wikiSuffix:String
-    let people:[PeopleJson]
-}
-
-struct PeopleJson: Decodable{
-    let name:String
-    let description:String
-    let imageSuffix:String
-    let wikiSuffix:String
-   
-}
+//struct HousesJson : Decodable {
+//    let houses:[HouseJson]
+//}
+//
+//
+//struct HouseJson: Decodable{
+//    let name:String
+//    let wikiSuffix:String
+//    let people:[PeopleJson]
+//}
+//
+//struct PeopleJson: Decodable{
+//    let name:String
+//    let description:String
+//    let imageSuffix:String
+//    let wikiSuffix:String
+//
+//}
 
 
 
@@ -42,11 +42,11 @@ final class myJson:Decodable{
         
        //let url="/Users/ARMANDO/Desktop/BOOTCAMP_MOBILE/Swift/IOS SWIFT/Westeros/Westeros/DATA/HOUSES.JSON"
        // let json = try! String(contentsOf:URL(string:url)!)
-        guard let path = Bundle.main.path(forResource: "HOUSES", ofType: "JSON") else{return}
+        guard let path = Bundle.main.path(forResource: "house", ofType: "json") else{return}
         guard let data=NSData(contentsOfFile:path) else{return}
         let decoder = JSONDecoder()
         
-        let houses = try! decoder.decode(HousesJson.self, from: data as Data)
+        let houses = try! decoder.decode([houseJson].self, from: data as Data)
         print(houses)
        
         

@@ -53,18 +53,7 @@ class WikiViewController: UIViewController {
             }
             //Actualizar el modelo
             self.syncModelWithView()
-            }
-//        notificationCenter.addObserver(forName: NSNotification.Name(rawValue: SEASON_DID_CHANGE_NOTIFICATION_NAME), object: nil, queue: OperationQueue.main) { (notification) in
-//            // userInfo is the payload send by sender of notification
-//            if let userInfo = notification.userInfo {
-//                //Sacar la casa
-//                self.allmodel = userInfo[SEASON_KEY] as! Season
-//            }
-//            //Actualizar el modelo
-//            self.syncModelWithView()
-//        }
-//        notificationCenter.addObserver(self, selector: #selector(houseDidChange), name: Notification.Name(rawValue: HOUSE_DID_CHANGE_NOTIFICATION_NAME), object: nil)
-        
+        }
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -85,6 +74,7 @@ class WikiViewController: UIViewController {
     }
     //MARK: - Sync
     func syncModelWithView(){
+        title="WIKI"
         let backItem = UIBarButtonItem()
         var url : URL
         if (allmodel is House){
@@ -93,7 +83,7 @@ class WikiViewController: UIViewController {
             url = (allmodel as! House).wikiURL
         } else if (allmodel is Person)
         {
-            url = (allmodel as! Person).wikiURL
+            url = URL(string:(allmodel as! Person).wikiURL)!
         }else{
             url = (allmodel as! Episode).wikiURL
         }

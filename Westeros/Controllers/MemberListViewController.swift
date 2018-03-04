@@ -87,7 +87,7 @@ extension MemberListViewController: UITableViewDataSource {
         
         // Sicronizar celda y persona
         cell.textLabel?.text = selectedPerson.fullName
-        cell.imageView?.image=selectedPerson.personImage
+        cell.imageView?.image=UIImage(named:selectedPerson.personImage)
         
         // Devolver la celda
         return cell

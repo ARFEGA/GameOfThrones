@@ -18,8 +18,8 @@ typealias Words = String
 
 final class House {
     let name:String
-    let sigil: Sigil
-    let words:Words
+    var sigil:Sigil
+    let words:String
     let wikiURL:URL
     
     private var _members: Members
@@ -32,15 +32,19 @@ final class House {
         _members=Members()
     }
 //    private enum CodingKeys: String, CodingKey {
-//        case name = "first_name"
-//        case lastName = "last_name"
-//        case age
+//        case name
+//        case sigil
+//        case words
+//        case wikiURL
 //    }
 //
 //    required init(from decoder:Decoder) throws {
 //        let values = try decoder.container(keyedBy: CodingKeys.self)
-//        indexPath = try values.decode([Int].self, forKey: .indexPath)
-//        locationInText = try values.decode(Int.self, forKey: .locationInText)
+//        self.name = try values.decode(String.self, forKey: .name)
+//        self.words = try values.decode(String.self, forKey: .words)
+//        self.wikiURL=try values.decode(String.self, forKey: .wikiURL)
+//        self.sigil=try values.decode([String].self, forKey: .sigil)
+//        _members=Members()
 //    }
 }
 
@@ -101,9 +105,22 @@ extension House:Comparable{
 
 final class Sigil{
     let description: String
-    let image:UIImage
-    init(image:UIImage,description:String) {
+    let image:String
+    
+    init(image:String,description:String) {
         self.image=image
         self.description=description
     }
+//    private enum CodingKeys: String, CodingKey {
+//        case description
+//        case image
+//    }
+//    required init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
+//        self.description = try container.decode(String.self, forKey: .description)
+//        self.image = try container.decode(String.self, forKey: .image)
+//        let superDecoder=try container.superDecoder()
+//        try super.init(from: superDecoder)
+//
+//    }
 }

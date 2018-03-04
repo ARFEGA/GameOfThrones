@@ -11,8 +11,8 @@ import UIKit
 final class Person{
     let name : String
     let house: House//Poner esta a weak
-    let personImage:UIImage
-    let wikiURL:URL
+    let personImage:String
+    let wikiURL:String
     private let _alias: String?
     
     var alias:String{
@@ -22,7 +22,7 @@ final class Person{
         //if let _alias=_alias{return _alias}else{return ""}
     }
     // MARK : - Inicializadores
-    init(name:String, alias:String?=nil , house:House,personImage:UIImage,wikiURL:URL){
+    init(name:String, alias:String?=nil , house:House,personImage:String,wikiURL:String){
         self.name=name
         _alias=alias
         self.house=house
