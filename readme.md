@@ -5,7 +5,7 @@
 - En la carpeta "VideoApp", hay un video demostrativo del funcionamiento de la app.
 - Declaración de referencias cruzadas a weak para un correcto funcionamiento de la propiedad retainCount, tales como:
 	- weak var season:Season? (Epiosdes.swift)
-	- weak var sigil:Sigil? (Houses.swift)
+	
 	
 - El detailVC de las season, muestra el resumen de la misma, este es extenso, pero se puede hacer scroll.
 
